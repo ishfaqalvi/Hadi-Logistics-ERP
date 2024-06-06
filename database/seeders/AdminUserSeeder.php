@@ -18,13 +18,18 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        $user = User::create([
-            'name'      	=> 'Super Admin',
-            'email'     	=> 'superadmin@gmail.com',
-            'password'  	=> 'password',
-        ]);
+        // $user = User::firstOrCreate([
+        //     'name'          => 'Super Admin',
+        //     'email'         => 'superadmin@gmail.com',
+        //     'password'      => 'password',
+        // ]);
 
-        $role = Role::create(['name' => 'Super Admin','guard_name' => 'web']);
+        $user = User::firstOrNew(['email' =>  'superadmin@gmail.com']);
+        $user->name = 'Super Admin';
+        $user->name = 'password';
+        $user->save();
+
+        $role = Role::firstOrCreate(['name' => 'Super Admin'], ['guard_name' => 'web']);
 
         $role->syncPermissions(Permission::all());
         $user->assignRole(1);
