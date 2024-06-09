@@ -79,6 +79,24 @@ class PermissionSeeder extends Seeder
             'verifications-edit',
             'verifications-delete',
 
+            'agents-list',
+            'agents-view',
+            'agents-create',
+            'agents-edit',
+            'agents-delete',
+
+            'consignees-list',
+            'consignees-view',
+            'consignees-create',
+            'consignees-edit',
+            'consignees-delete',
+
+            'customers-list',
+            'customers-view',
+            'customers-create',
+            'customers-edit',
+            'customers-delete',
+
 
         ];
 

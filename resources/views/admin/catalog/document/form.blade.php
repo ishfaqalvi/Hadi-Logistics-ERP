@@ -1,11 +1,16 @@
 <div class="row">
 
-    <div class="form-group col-lg-6 mb-3">
+    <div class="form-group col-lg-4 mb-3">
         {{ Form::label('title') }}
         {{ Form::text('title', $document->title, ['class' => 'form-control' . ($errors->has('title') ? ' is-invalid' : ''), 'placeholder' => 'Title', 'required']) }}
         {!! $errors->first('title', '<div class="invalid-feedback">:message</div>') !!}
     </div>
-    <div class="form-group col-lg-6 mb-3">
+    <div class="form-group col-lg-4 mb-3">
+        {{ Form::label('returnable') }}
+        {{ Form::select('returnable', ['1' => 'Yes', '0' => 'No'], $document->returnable, ['class' => 'form-control' . ($errors->has('returnable') ? ' is-invalid' : ''), 'placeholder' => 'Returnable']) }}
+        {!! $errors->first('returnable', '<div class="invalid-feedback">:message</div>') !!}
+    </div>
+    <div class="form-group col-lg-4 mb-3">
         {{ Form::label('status') }}
         {{ Form::select('status', ['1' => 'Active', '0' => 'InActive'], $document->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => 'Status']) }}
         {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
