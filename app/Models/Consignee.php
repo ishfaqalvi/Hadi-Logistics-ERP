@@ -6,23 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
- * Class Document
+ * Class Consignee
  *
  * @property $id
- * @property $title
- * @property $status
- * @property $description
+ * @property $name
+ * @property $father_name
+ * @property $email
+ * @property $phone_number
+ * @property $cnic
+ * @property $passport
+ * @property $address
  * @property $created_at
  * @property $updated_at
  *
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Document extends Model implements Auditable
+class Consignee extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-
+    
 
     protected $perPage = 20;
 
@@ -31,7 +35,7 @@ class Document extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['title','status','description', 'returnable'];
+    protected $fillable = ['name','father_name','email','phone_number','cnic','passport','address'];
 
 
 

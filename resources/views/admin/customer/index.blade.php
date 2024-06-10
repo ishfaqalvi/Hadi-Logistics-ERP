@@ -1,20 +1,20 @@
 @extends('admin.layout.app')
 
 @section('title')
-    Document
+    Customer
 @endsection
 
 @section('header')
     <div class="page-header-content d-lg-flex">
         <div class="d-flex">
             <h4 class="page-title mb-0">
-                Home - <span class="fw-normal">Document Managment</span>
+                Home - <span class="fw-normal">Customer Managment</span>
             </h4>
         </div>
-        @can('documents-create')
+        @can('customers-create')
             <div class="d-lg-block my-lg-auto ms-lg-auto">
                 <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
-                    <a href="{{ route('catalog.documents.create') }}"
+                    <a href="{{ route('customers.create') }}"
                         class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
                         <span class="btn-labeled-icon bg-primary text-white rounded-pill">
                             <i class="ph-plus"></i>
@@ -31,32 +31,36 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="mb-0">Document</h5>
+                <h5 class="mb-0">Customer</h5>
             </div>
             <table class="table datatable-basic">
                 <thead class="thead">
                     <tr>
                         <th>No</th>
 
-                        <th>Title</th>
-                        <th>Returnable</th>
-                        <th>Status</th>
-                        <th>Description</th>
+                        <th>Name</th>
+                        <th>Father Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Cnic</th>
+                        <th>Address</th>
 
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($documents as $key => $document)
+                    @foreach ($customers as $key => $customer)
                         <tr>
                             <td>{{ ++$key }}</td>
 
-                            <td>{{ $document->title }}</td>
-                            <td>{{ $document->returnable ? 'Yes' : 'No' }}</td>
-                            <td>{{ $document->status ? 'Active' : 'InActive' }}</td>
-                            <td>{{ $document->description }}</td>
+                            <td>{{ $customer->name }}</td>
+                            <td>{{ $customer->father_name }}</td>
+                            <td>{{ $customer->email }}</td>
+                            <td>{{ $customer->phone_number }}</td>
+                            <td>{{ $customer->cnic }}</td>
+                            <td>{{ $customer->address }}</td>
 
-                            <td class="text-center">@include('admin.catalog.document.actions')</td>
+                            <td class="text-center">@include('admin.customer.actions')</td>
                         </tr>
                     @endforeach
                 </tbody>

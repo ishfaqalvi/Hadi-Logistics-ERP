@@ -26,7 +26,7 @@ class AdminUserSeeder extends Seeder
 
         $user = User::firstOrNew(['email' =>  'superadmin@gmail.com']);
         $user->name = 'Super Admin';
-        $user->name = 'password';
+        $user->password = 'password';
         $user->save();
 
         $role = Role::firstOrCreate(['name' => 'Super Admin'], ['guard_name' => 'web']);

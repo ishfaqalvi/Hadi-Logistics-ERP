@@ -9,6 +9,33 @@
     </a>
 </li>
 
+@can('customers-list')
+    <li class="nav-item">
+        <a class="nav-link {{ Route::is('customers.*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
+            <i class="ph-house"></i>
+            <span>Customers</span>
+        </a>
+    </li>
+@endcan
+
+@can('consignees-list')
+    <li class="nav-item">
+        <a class="nav-link {{ Route::is('consignees.*') ? 'active' : '' }}" href="{{ route('consignees.index') }}">
+            <i class="ph-house"></i>
+            <span>Consignee</span>
+        </a>
+    </li>
+@endcan
+
+@can('agents-list')
+    <li class="nav-item">
+        <a class="nav-link {{ Route::is('agents.*') ? 'active' : '' }}" href="{{ route('agents.index') }}">
+            <i class="ph-house"></i>
+            <span>Agents</span>
+        </a>
+    </li>
+@endcan
+
 @canany(['documents-list', 'verifications-list', 'passportChecks-list', 'vehicles-list', 'vehicleCompanies-list'])
     <li class="nav-item nav-item-submenu {{ Route::is('catalog.*') ? 'nav-item-expanded nav-item-open' : '' }}">
         <a href="#" class="nav-link ">

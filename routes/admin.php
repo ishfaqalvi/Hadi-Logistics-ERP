@@ -1,11 +1,14 @@
 <?php
 
+use App\Http\Controllers\Admin\AgentController;
 use App\Http\Controllers\Admin\Catalog\DocumentController;
 use App\Http\Controllers\Admin\Catalog\VehicleCompanyController;
 use App\Http\Controllers\Admin\Catalog\VehicleController;
 use App\Http\Controllers\Admin\Catalog\PassportCheckController;
 use App\Http\Controllers\Admin\SettingFieldController;
 use App\Http\Controllers\Admin\Catalog\VerificationController;
+use App\Http\Controllers\Admin\ConsigneeController;
+use App\Http\Controllers\Admin\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -87,6 +90,28 @@ Route::prefix('catalog')->as('catalog.')->group(function () {
     Route::resource('verifications', VerificationController::class);
     Route::resource('documents', DocumentController::class);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Agents Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('agents', AgentController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Customers Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('customers', CustomerController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Consignees Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('consignees', ConsigneeController::class);
+
 
 /*
 |--------------------------------------------------------------------------
