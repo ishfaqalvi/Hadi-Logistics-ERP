@@ -16,6 +16,18 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'jobes-list',
+            'jobes-view',
+            'jobes-create',
+            'jobes-edit',
+            'jobes-delete',
+
+            'sheds-list',
+            'sheds-view',
+            'sheds-create',
+            'sheds-edit',
+            'sheds-delete',
+
             'vehicleCompanies-list',
             'vehicleCompanies-view',
             'vehicleCompanies-create',
@@ -96,7 +108,6 @@ class PermissionSeeder extends Seeder
 
             'settings-list',
             'settings-create',
-
         ];
 
         foreach ($permissions as $permission) {

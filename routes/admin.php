@@ -75,8 +75,6 @@ Route::controller(SettingController::class)->prefix('settings')->as('settings.')
     Route::post('save',         'save')->name('save');
 });
 
-
-
 /*
 |--------------------------------------------------------------------------
 | Agents Routes
@@ -98,6 +96,20 @@ Route::resource('customers', CustomerController::class);
 */
 Route::resource('consignees', ConsigneeController::class);
 
+/*
+|--------------------------------------------------------------------------
+| Jobes Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('jobes')->as('jobes.')->group(function () {
+    Route::get('{id}/documents',         'JobesDocumentController@index')->name('documents');
+    Route::post('{id}/documents',        'JobesDocumentController@store')->name('documents-store');
+    Route::get('{id}/verifications',     'JobesVerificationController@index')->name('verifications');
+    Route::post('{id}/verifications',    'JobesVerificationController@store')->name('verifications-store');
+    Route::get('{id}/passport',          'JobesPassportCheckController@index')->name('passport');
+    Route::post('{id}/passport',         'JobesPassportCheckController@store')->name('passport-store');
+});
+Route::resource('jobes', JobeController::class);
 
 /*
 |--------------------------------------------------------------------------

@@ -34,6 +34,14 @@ class Vehicle extends Model implements Auditable
     protected $fillable = ['vehicle_company_id','title','description','status'];
 
     /**
+     * Scope for active vehicles.
+     *
+     */
+    public function scopeActive($query) {
+        return $query->where('status', 1);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function vehicleCompany()

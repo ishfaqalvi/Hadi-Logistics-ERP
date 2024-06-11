@@ -29,5 +29,20 @@ class Document extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['title','status','description', 'returnable'];
+    protected $fillable = ['title', 'status', 'description', 'returnable'];
+
+    /**
+     * Scope for active vehicles.
+     *
+     */
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
+
+    public function jobe()
+    {
+        return $this->belongsToMany(Jobe::class, 'documents_jobes', 'document_id', 'jobe_id')
+            ->withPivot('submitted_at', 'attachment', 'submitted_remarks', 'returned_at', 'returned_remarks');
+    }
 }

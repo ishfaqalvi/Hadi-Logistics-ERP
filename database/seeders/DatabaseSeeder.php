@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionSeeder::class);
         $this->call(AdminUserSeeder::class);
         // $this->call(SettingsSeeder::class);
+        $this->call(DocumentSeeder::class);
+        $this->call(PassportCheckSeeder::class);
+        $this->call(VerificationSeeder::class);
     }
 }
