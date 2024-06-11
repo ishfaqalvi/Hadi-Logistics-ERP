@@ -36,3 +36,10 @@ Route::resource('verifications', VerificationController::class);
 |--------------------------------------------------------------------------
 */
 Route::resource('documents', DocumentController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Sheds Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('sheds', ShedController::class);
