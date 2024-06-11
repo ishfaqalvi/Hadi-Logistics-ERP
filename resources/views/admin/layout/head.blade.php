@@ -55,31 +55,31 @@
                 type: 'alert',
                 timeout: 2500
             });
-            @if(Session::has('success'))
+            @if (Session::has('success'))
                 new Noty({
                     layout: 'bottomCenter',
-                    text: "{{Session::get('success')}}",
+                    text: "{{ Session::get('success') }}",
                     type: 'success'
                 }).show();
             @endif
-            @if(Session::has('warning'))
+            @if (Session::has('warning'))
                 new Noty({
                     layout: 'bottomCenter',
-                    text: "{{Session::get('warning')}}",
+                    text: "{{ Session::get('warning') }}",
                     type: 'warning'
                 }).show();
             @endif
-            @if(Session::has('info'))
+            @if (Session::has('info'))
                 new Noty({
                     layout: 'bottomCenter',
-                    text: "{{Session::get('info')}}",
+                    text: "{{ Session::get('info') }}",
                     type: 'info'
                 }).show();
             @endif
-            @if(Session::has('error'))
+            @if (Session::has('error'))
                 new Noty({
                     layout: 'bottomCenter',
-                    text: "{{Session::get('error')}}",
+                    text: "{{ Session::get('error') }}",
                     type: 'error'
                 }).show();
             @endif
@@ -95,3 +95,4 @@
     });
 </script>
 @yield('script')
+@stack('script')

@@ -97,6 +97,18 @@ class PermissionSeeder extends Seeder
             'customers-edit',
             'customers-delete',
 
+            'sheds-list',
+            'sheds-view',
+            'sheds-create',
+            'sheds-edit',
+            'sheds-delete',
+
+            'jobes-list',
+            'jobes-view',
+            'jobes-create',
+            'jobes-edit',
+            'jobes-delete',
+
 
         ];
 

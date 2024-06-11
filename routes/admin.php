@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\Catalog\DocumentController;
 use App\Http\Controllers\Admin\Catalog\VehicleCompanyController;
 use App\Http\Controllers\Admin\Catalog\VehicleController;
 use App\Http\Controllers\Admin\Catalog\PassportCheckController;
+use App\Http\Controllers\Admin\Catalog\ShedController;
+use App\Http\Controllers\Admin\JobeController;
 use App\Http\Controllers\Admin\SettingFieldController;
 use App\Http\Controllers\Admin\Catalog\VerificationController;
 use App\Http\Controllers\Admin\ConsigneeController;
@@ -89,6 +91,7 @@ Route::prefix('catalog')->as('catalog.')->group(function () {
     Route::resource('passport-checks', PassportCheckController::class);
     Route::resource('verifications', VerificationController::class);
     Route::resource('documents', DocumentController::class);
+    Route::resource('sheds', ShedController::class);
 });
 
 /*
@@ -112,6 +115,20 @@ Route::resource('customers', CustomerController::class);
 */
 Route::resource('consignees', ConsigneeController::class);
 
+/*
+|--------------------------------------------------------------------------
+| Jobes Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('jobes')->as('jobes.')->group(function () {
+    Route::get('{id}/documents',         'JobesDocumentController@index')->name('documents');
+    Route::post('{id}/documents',        'JobesDocumentController@store')->name('documents-store');
+    Route::get('{id}/verifications',     'JobesVerificationController@index')->name('verifications');
+    Route::post('{id}/verifications',    'JobesVerificationController@store')->name('verifications-store');
+    Route::get('{id}/passport',          'JobesPassportCheckController@index')->name('passport');
+    Route::post('{id}/passport',         'JobesPassportCheckController@store')->name('passport-store');
+});
+Route::resource('jobes', JobeController::class);
 
 /*
 |--------------------------------------------------------------------------
