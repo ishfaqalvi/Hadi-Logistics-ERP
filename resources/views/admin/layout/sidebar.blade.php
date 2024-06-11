@@ -89,8 +89,8 @@
             @endcan
             @can('sheds-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.sheds.index') }}"
-                        class="nav-link  {{ Route::is('catalog.sheds.*') ? 'active' : '' }}">
+                    <a href="{{ route('sheds.index') }}"
+                        class="nav-link  {{ Route::is('sheds.*') ? 'active' : '' }}">
                         <span>Sheds</span>
                     </a>
                 </li>
