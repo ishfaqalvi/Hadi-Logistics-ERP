@@ -22,10 +22,10 @@ class VerificationController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:verifications-list',  ['only' => ['index']]);
-        $this->middleware('permission:verifications-view',  ['only' => ['show']]);
+        $this->middleware('permission:verifications-list',   ['only' => ['index']]);
+        $this->middleware('permission:verifications-view',   ['only' => ['show']]);
         $this->middleware('permission:verifications-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:verifications-edit',  ['only' => ['edit', 'update']]);
+        $this->middleware('permission:verifications-edit',   ['only' => ['edit', 'update']]);
         $this->middleware('permission:verifications-delete', ['only' => ['destroy']]);
     }
 
@@ -61,7 +61,7 @@ class VerificationController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $verification = Verification::create($request->all());
-        return redirect()->route('catalog.verifications.index')
+        return redirect()->route('verifications.index')
             ->with('success', 'Verification created successfully.');
     }
 
@@ -102,7 +102,7 @@ class VerificationController extends Controller
     {
         $verification->update($request->all());
 
-        return redirect()->route('catalog.verifications.index')
+        return redirect()->route('verifications.index')
             ->with('success', 'Verification updated successfully');
     }
 
@@ -115,7 +115,7 @@ class VerificationController extends Controller
     {
         $verification = Verification::find($id)->delete();
 
-        return redirect()->route('catalog.verifications.index')
+        return redirect()->route('verifications.index')
             ->with('success', 'Verification deleted successfully');
     }
 }

@@ -13,7 +13,7 @@
     </div>
     <div class="d-lg-block my-lg-auto ms-lg-auto">
         <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
-            <a href="{{ route('catalog.documents.index') }}" class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
+            <a href="{{ route('documents.index') }}" class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
                 <span class="btn-labeled-icon bg-primary text-white rounded-pill">
                     <i class="ph-arrow-circle-left"></i>
                 </span>
@@ -31,7 +31,7 @@
             <h5 class="mb-0">{{ __('Create') }} Document</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('catalog.documents.store') }}" class="validate" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('documents.store') }}" class="validate" role="form" enctype="multipart/form-data">
                 @csrf
                 @include('admin.catalog.document.form')
             </form>
@@ -56,9 +56,6 @@
                 $(element).removeClass(errorClass);
                 $(element).removeClass('is-invalid');
                 $(element).addClass('is-valid');
-            },
-            success: function(label) {
-                label.addClass('validation-valid-label').text('Success.');
             },
             errorPlacement: function(error, element) {
                 if (element.hasClass('select2-hidden-accessible')) {

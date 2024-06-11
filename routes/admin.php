@@ -1,14 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\AgentController;
-use App\Http\Controllers\Admin\Catalog\DocumentController;
-use App\Http\Controllers\Admin\Catalog\VehicleCompanyController;
-use App\Http\Controllers\Admin\Catalog\VehicleController;
-use App\Http\Controllers\Admin\Catalog\PassportCheckController;
-use App\Http\Controllers\Admin\SettingFieldController;
-use App\Http\Controllers\Admin\Catalog\VerificationController;
-use App\Http\Controllers\Admin\ConsigneeController;
-use App\Http\Controllers\Admin\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,8 +7,14 @@ use Illuminate\Support\Facades\Route;
 | Dashboard Route
 |--------------------------------------------------------------------------
 */
-
 Route::get('dashboard', DashboardController::class)->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Catalog Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('/catalog')->namespace('\App\Http\Controllers\Admin\Catalog')->group(__DIR__.'/catalog.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -32,17 +29,17 @@ Route::resource('roles', RoleController::class);
 |--------------------------------------------------------------------------
 */
 Route::controller(UserController::class)->prefix('users')->as('users.')->group(function () {
-    Route::get('list',                'index')->name('index');
-    Route::get('create',            'create')->name('create');
-    Route::post('store',            'store')->name('store');
-    Route::get('edit/{id}',            'edit')->name('edit');
-    Route::get('show/{id}',            'show')->name('show');
-    Route::patch('update/{user}',    'update')->name('update');
-    Route::delete('delete/{id}',    'destroy')->name('destroy');
-    Route::get('profile',              'profileEdit')->name('profileEdit');
-    Route::post('profile',             'profileUpdate')->name('profileUpdate');
-    Route::post('check_email',          'checkEmail')->name('checkEmail');
-    Route::post('check_password',    'checkPassword')->name('checkPassword');
+    Route::get('list',                  'index'         )->name('index'         );
+    Route::get('create',                'create'        )->name('create'        );
+    Route::post('store',                'store'         )->name('store'         );
+    Route::get('edit/{id}',             'edit'          )->name('edit'          );
+    Route::get('show/{id}',             'show'          )->name('show'          );
+    Route::patch('update/{user}',       'update'        )->name('update'        );
+    Route::delete('delete/{id}',        'destroy'       )->name('destroy'       );
+    Route::get('profile',               'profileEdit'   )->name('profileEdit'   );
+    Route::post('profile',              'profileUpdate' )->name('profileUpdate' );
+    Route::post('check_email',          'checkEmail'    )->name('checkEmail'    );
+    Route::post('check_password',       'checkPassword' )->name('checkPassword' );
 });
 
 /*
@@ -78,18 +75,7 @@ Route::controller(SettingController::class)->prefix('settings')->as('settings.')
     Route::post('save',         'save')->name('save');
 });
 
-/*
-|--------------------------------------------------------------------------
-| Catalog Routes
-|--------------------------------------------------------------------------
-*/
-Route::prefix('catalog')->as('catalog.')->group(function () {
-    Route::resource('vehicle-companies', VehicleCompanyController::class);
-    Route::resource('vehicles', VehicleController::class);
-    Route::resource('passport-checks', PassportCheckController::class);
-    Route::resource('verifications', VerificationController::class);
-    Route::resource('documents', DocumentController::class);
-});
+
 
 /*
 |--------------------------------------------------------------------------

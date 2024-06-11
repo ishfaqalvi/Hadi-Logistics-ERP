@@ -25,8 +25,6 @@ class Customer extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -35,7 +33,4 @@ class Customer extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['name','father_name','email','phone_number','cnic','address'];
-
-
-
 }

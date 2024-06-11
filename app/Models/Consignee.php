@@ -26,8 +26,6 @@ class Consignee extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -36,7 +34,5 @@ class Consignee extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['name','father_name','email','phone_number','cnic','passport','address'];
-
-
 
 }

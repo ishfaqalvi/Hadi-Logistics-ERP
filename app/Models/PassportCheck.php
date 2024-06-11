@@ -22,8 +22,6 @@ class PassportCheck extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -32,7 +30,4 @@ class PassportCheck extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['title','status','description'];
-
-
-
 }

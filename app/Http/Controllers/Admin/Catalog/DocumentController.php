@@ -22,10 +22,10 @@ class DocumentController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:documents-list',  ['only' => ['index']]);
-        $this->middleware('permission:documents-view',  ['only' => ['show']]);
+        $this->middleware('permission:documents-list',   ['only' => ['index']]);
+        $this->middleware('permission:documents-view',   ['only' => ['show']]);
         $this->middleware('permission:documents-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:documents-edit',  ['only' => ['edit', 'update']]);
+        $this->middleware('permission:documents-edit',   ['only' => ['edit', 'update']]);
         $this->middleware('permission:documents-delete', ['only' => ['destroy']]);
     }
 
@@ -61,7 +61,7 @@ class DocumentController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $document = Document::create($request->all());
-        return redirect()->route('catalog.documents.index')
+        return redirect()->route('documents.index')
             ->with('success', 'Document created successfully.');
     }
 
@@ -102,7 +102,7 @@ class DocumentController extends Controller
     {
         $document->update($request->all());
 
-        return redirect()->route('catalog.documents.index')
+        return redirect()->route('documents.index')
             ->with('success', 'Document updated successfully');
     }
 
@@ -115,7 +115,7 @@ class DocumentController extends Controller
     {
         $document = Document::find($id)->delete();
 
-        return redirect()->route('catalog.documents.index')
+        return redirect()->route('documents.index')
             ->with('success', 'Document deleted successfully');
     }
 }

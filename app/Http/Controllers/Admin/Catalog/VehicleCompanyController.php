@@ -61,7 +61,7 @@ class VehicleCompanyController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $vehicleCompany = VehicleCompany::create($request->all());
-        return redirect()->route('catalog.vehicle-companies.index')
+        return redirect()->route('vehicle-companies.index')
             ->with('success', 'VehicleCompany created successfully.');
     }
 
@@ -102,7 +102,7 @@ class VehicleCompanyController extends Controller
     {
         $vehicleCompany->update($request->all());
 
-        return redirect()->route('catalog.vehicle-companies.index')
+        return redirect()->route('vehicle-companies.index')
             ->with('success', 'VehicleCompany updated successfully');
     }
 
@@ -115,7 +115,7 @@ class VehicleCompanyController extends Controller
     {
         $vehicleCompany = VehicleCompany::find($id)->delete();
 
-        return redirect()->route('catalog.vehicle-companies.index')
+        return redirect()->route('vehicle-companies.index')
             ->with('success', 'VehicleCompany deleted successfully');
     }
 }

@@ -23,8 +23,6 @@ class Agent extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -33,7 +31,5 @@ class Agent extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['name','email','phone_number','address'];
-
-
 
 }

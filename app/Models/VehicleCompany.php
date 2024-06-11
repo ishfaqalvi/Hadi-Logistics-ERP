@@ -23,8 +23,6 @@ class VehicleCompany extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -34,7 +32,6 @@ class VehicleCompany extends Model implements Auditable
      */
     protected $fillable = ['title','description','status'];
 
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -42,6 +39,4 @@ class VehicleCompany extends Model implements Auditable
     {
         return $this->hasMany('App\Models\Vehicle', 'vehicle_company_id', 'id');
     }
-    
-
 }

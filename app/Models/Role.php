@@ -22,7 +22,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 class Role extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
-    
+
     static $rules = [
 		'name' => 'required',
 		'guard_name' => 'required',
@@ -45,7 +45,7 @@ class Role extends Model implements Auditable
     {
         return $this->hasOne('App\Models\ModelHasRole', 'role_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -53,6 +53,4 @@ class Role extends Model implements Auditable
     {
         return $this->hasMany('App\Models\RoleHasPermission', 'role_id', 'id');
     }
-    
-
 }

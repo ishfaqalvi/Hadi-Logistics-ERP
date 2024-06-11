@@ -5,26 +5,26 @@
 @endsection
 
 @section('header')
-    <div class="page-header-content d-lg-flex">
-        <div class="d-flex">
-            <h4 class="page-title mb-0">
-                Home - <span class="fw-normal">Consignee Managment</span>
-            </h4>
-        </div>
-        @can('consignees-create')
-            <div class="d-lg-block my-lg-auto ms-lg-auto">
-                <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
-                    <a href="{{ route('consignees.create') }}"
-                        class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
-                        <span class="btn-labeled-icon bg-primary text-white rounded-pill">
-                            <i class="ph-plus"></i>
-                        </span>
-                        Create New
-                    </a>
-                </div>
-            </div>
-        @endcan
+<div class="page-header-content d-lg-flex">
+    <div class="d-flex">
+        <h4 class="page-title mb-0">
+            Home - <span class="fw-normal">Consignee Managment</span>
+        </h4>
     </div>
+    @can('consignees-create')
+        <div class="d-lg-block my-lg-auto ms-lg-auto">
+            <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
+                <a href="{{ route('consignees.create') }}"
+                    class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
+                    <span class="btn-labeled-icon bg-primary text-white rounded-pill">
+                        <i class="ph-plus"></i>
+                    </span>
+                    Create New
+                </a>
+            </div>
+        </div>
+    @endcan
+</div>
 @endsection
 
 @section('content')
@@ -37,15 +37,12 @@
                 <thead class="thead">
                     <tr>
                         <th>No</th>
-
                         <th>Name</th>
                         <th>Father Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Cnic</th>
                         <th>Passport</th>
-                        <th>Address</th>
-
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -53,15 +50,12 @@
                     @foreach ($consignees as $key => $consignee)
                         <tr>
                             <td>{{ ++$key }}</td>
-
                             <td>{{ $consignee->name }}</td>
                             <td>{{ $consignee->father_name }}</td>
                             <td>{{ $consignee->email }}</td>
                             <td>{{ $consignee->phone_number }}</td>
                             <td>{{ $consignee->cnic }}</td>
                             <td>{{ $consignee->passport }}</td>
-                            <td>{{ $consignee->address }}</td>
-
                             <td class="text-center">@include('admin.consignee.actions')</td>
                         </tr>
                     @endforeach

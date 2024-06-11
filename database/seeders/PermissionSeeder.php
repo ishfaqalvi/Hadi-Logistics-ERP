@@ -16,39 +16,6 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'roles-list',
-            'roles-view',
-            'roles-create',
-            'roles-edit',
-            'roles-delete',
-
-            'users-list',
-            'users-view',
-            'users-create',
-            'users-edit',
-            'users-delete',
-
-            'notifications-list',
-            'notifications-view',
-            'notifications-create',
-            'notifications-edit',
-            'notifications-delete',
-
-            'audits-list',
-            'audits-view',
-            'audits-create',
-            'audits-edit',
-            'audits-delete',
-
-            'logs-list',
-            'logs-view',
-            'logs-create',
-            'logs-edit',
-            'logs-delete',
-
-            'settings-list',
-            'settings-create',
-
             'vehicleCompanies-list',
             'vehicleCompanies-view',
             'vehicleCompanies-create',
@@ -97,6 +64,38 @@ class PermissionSeeder extends Seeder
             'customers-edit',
             'customers-delete',
 
+            'roles-list',
+            'roles-view',
+            'roles-create',
+            'roles-edit',
+            'roles-delete',
+
+            'users-list',
+            'users-view',
+            'users-create',
+            'users-edit',
+            'users-delete',
+
+            'notifications-list',
+            'notifications-view',
+            'notifications-create',
+            'notifications-edit',
+            'notifications-delete',
+
+            'audits-list',
+            'audits-view',
+            'audits-create',
+            'audits-edit',
+            'audits-delete',
+
+            'logs-list',
+            'logs-view',
+            'logs-create',
+            'logs-edit',
+            'logs-delete',
+
+            'settings-list',
+            'settings-create',
 
         ];
 
