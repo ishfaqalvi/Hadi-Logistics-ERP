@@ -31,24 +31,22 @@
             <h5 class="mb-0">{{ __('Show') }} Agent</h5>
         </div>
         <div class="card-body">
-            
-                        <div class="form-group mb-3">
-                            <strong>Name:</strong>
-                            {{ $agent->name }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Email:</strong>
-                            {{ $agent->email }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Phone Number:</strong>
-                            {{ $agent->phone_number }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Address:</strong>
-                            {{ $agent->address }}
-                        </div>
-
+            <div class="form-group mb-3">
+                <strong>Name:</strong>
+                {{ $agent->name }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Email:</strong>
+                {{ $agent->email }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Phone Number:</strong>
+                {{ $agent->phone_number }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Address:</strong>
+                {{ $agent->address }}
+            </div>
         </div>
     </div>
 </div>

@@ -16,38 +16,17 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'roles-list',
-            'roles-view',
-            'roles-create',
-            'roles-edit',
-            'roles-delete',
+            'jobes-list',
+            'jobes-view',
+            'jobes-create',
+            'jobes-edit',
+            'jobes-delete',
 
-            'users-list',
-            'users-view',
-            'users-create',
-            'users-edit',
-            'users-delete',
-
-            'notifications-list',
-            'notifications-view',
-            'notifications-create',
-            'notifications-edit',
-            'notifications-delete',
-
-            'audits-list',
-            'audits-view',
-            'audits-create',
-            'audits-edit',
-            'audits-delete',
-
-            'logs-list',
-            'logs-view',
-            'logs-create',
-            'logs-edit',
-            'logs-delete',
-
-            'settings-list',
-            'settings-create',
+            'sheds-list',
+            'sheds-view',
+            'sheds-create',
+            'sheds-edit',
+            'sheds-delete',
 
             'vehicleCompanies-list',
             'vehicleCompanies-view',
@@ -97,19 +76,38 @@ class PermissionSeeder extends Seeder
             'customers-edit',
             'customers-delete',
 
-            'sheds-list',
-            'sheds-view',
-            'sheds-create',
-            'sheds-edit',
-            'sheds-delete',
+            'roles-list',
+            'roles-view',
+            'roles-create',
+            'roles-edit',
+            'roles-delete',
 
-            'jobes-list',
-            'jobes-view',
-            'jobes-create',
-            'jobes-edit',
-            'jobes-delete',
+            'users-list',
+            'users-view',
+            'users-create',
+            'users-edit',
+            'users-delete',
 
+            'notifications-list',
+            'notifications-view',
+            'notifications-create',
+            'notifications-edit',
+            'notifications-delete',
 
+            'audits-list',
+            'audits-view',
+            'audits-create',
+            'audits-edit',
+            'audits-delete',
+
+            'logs-list',
+            'logs-view',
+            'logs-create',
+            'logs-edit',
+            'logs-delete',
+
+            'settings-list',
+            'settings-create',
         ];
 
         foreach ($permissions as $permission) {

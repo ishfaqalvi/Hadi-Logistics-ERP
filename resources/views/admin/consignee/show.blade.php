@@ -31,36 +31,34 @@
             <h5 class="mb-0">{{ __('Show') }} Consignee</h5>
         </div>
         <div class="card-body">
-            
-                        <div class="form-group mb-3">
-                            <strong>Name:</strong>
-                            {{ $consignee->name }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Father Name:</strong>
-                            {{ $consignee->father_name }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Email:</strong>
-                            {{ $consignee->email }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Phone Number:</strong>
-                            {{ $consignee->phone_number }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Cnic:</strong>
-                            {{ $consignee->cnic }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Passport:</strong>
-                            {{ $consignee->passport }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Address:</strong>
-                            {{ $consignee->address }}
-                        </div>
-
+            <div class="form-group mb-3">
+                <strong>Name:</strong>
+                {{ $consignee->name }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Father Name:</strong>
+                {{ $consignee->father_name }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Email:</strong>
+                {{ $consignee->email }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Phone Number:</strong>
+                {{ $consignee->phone_number }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Cnic:</strong>
+                {{ $consignee->cnic }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Passport:</strong>
+                {{ $consignee->passport }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Address:</strong>
+                {{ $consignee->address }}
+            </div>
         </div>
     </div>
 </div>

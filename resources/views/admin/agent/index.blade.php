@@ -37,12 +37,10 @@
                 <thead class="thead">
                     <tr>
                         <th>No</th>
-
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Address</th>
-
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -50,12 +48,10 @@
                     @foreach ($agents as $key => $agent)
                         <tr>
                             <td>{{ ++$key }}</td>
-
                             <td>{{ $agent->name }}</td>
                             <td>{{ $agent->email }}</td>
                             <td>{{ $agent->phone_number }}</td>
                             <td>{{ $agent->address }}</td>
-
                             <td class="text-center">@include('admin.agent.actions')</td>
                         </tr>
                     @endforeach

@@ -34,7 +34,7 @@
             <form method="POST" action="{{ route('agents.update', $agent->id) }}" class="validate"   role="form" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PATCH') }}
-                 @include('admin.agent.form')
+                @include('admin.agent.form')
             </form>
         </div>
     </div>
@@ -57,9 +57,6 @@
                 $(element).removeClass(errorClass);
                 $(element).removeClass('is-invalid');
                 $(element).addClass('is-valid');
-            },
-            success: function(label) {
-                label.addClass('validation-valid-label').text('Success.');
             },
             errorPlacement: function(error, element) {
                 if (element.hasClass('select2-hidden-accessible')) {

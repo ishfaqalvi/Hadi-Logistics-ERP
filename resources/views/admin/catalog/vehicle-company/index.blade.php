@@ -5,26 +5,26 @@
 @endsection
 
 @section('header')
-    <div class="page-header-content d-lg-flex">
-        <div class="d-flex">
-            <h4 class="page-title mb-0">
-                Home - <span class="fw-normal">Vehicle Company Managment</span>
-            </h4>
-        </div>
-        @can('vehicleCompanies-create')
-            <div class="d-lg-block my-lg-auto ms-lg-auto">
-                <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
-                    <a href="{{ route('catalog.vehicle-companies.create') }}"
-                        class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
-                        <span class="btn-labeled-icon bg-primary text-white rounded-pill">
-                            <i class="ph-plus"></i>
-                        </span>
-                        Create New
-                    </a>
-                </div>
-            </div>
-        @endcan
+<div class="page-header-content d-lg-flex">
+    <div class="d-flex">
+        <h4 class="page-title mb-0">
+            Home - <span class="fw-normal">Vehicle Company Managment</span>
+        </h4>
     </div>
+    @can('vehicleCompanies-create')
+        <div class="d-lg-block my-lg-auto ms-lg-auto">
+            <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
+                <a href="{{ route('vehicle-companies.create') }}"
+                    class="btn btn-outline-primary btn-labeled btn-labeled-start rounded-pill">
+                    <span class="btn-labeled-icon bg-primary text-white rounded-pill">
+                        <i class="ph-plus"></i>
+                    </span>
+                    Create New
+                </a>
+            </div>
+        </div>
+    @endcan
+</div>
 @endsection
 
 @section('content')
@@ -37,11 +37,9 @@
                 <thead class="thead">
                     <tr>
                         <th>No</th>
-
                         <th>Title</th>
                         <th>Description</th>
                         <th>Status</th>
-
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -49,11 +47,9 @@
                     @foreach ($vehicleCompanies as $key => $vehicleCompany)
                         <tr>
                             <td>{{ ++$key }}</td>
-
                             <td>{{ $vehicleCompany->title }}</td>
                             <td>{{ $vehicleCompany->description }}</td>
                             <td>{{ $vehicleCompany->status ? 'Active' : 'InActive' }}</td>
-
                             <td class="text-center">
                                 @include('admin.catalog.vehicle-company.actions')
                             </td>

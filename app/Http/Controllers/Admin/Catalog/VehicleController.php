@@ -50,8 +50,8 @@ class VehicleController extends Controller
     public function create(): View
     {
         $vehicle = new Vehicle();
-        $vehicleCompanies = VehicleCompany::where('status', 1)->get()->pluck('title', 'id');
-        return view('admin.catalog.vehicle.create', compact('vehicle', 'vehicleCompanies'));
+
+        return view('admin.catalog.vehicle.create', compact('vehicle'));
     }
 
     /**
@@ -63,7 +63,7 @@ class VehicleController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $vehicle = Vehicle::create($request->all());
-        return redirect()->route('catalog.vehicles.index')
+        return redirect()->route('vehicles.index')
             ->with('success', 'Vehicle created successfully.');
     }
 
@@ -89,8 +89,8 @@ class VehicleController extends Controller
     public function edit($id): View
     {
         $vehicle = Vehicle::find($id);
-        $vehicleCompanies = VehicleCompany::where('status', 1)->get()->pluck('title', 'id');
-        return view('admin.catalog.vehicle.edit', compact('vehicle', 'vehicleCompanies'));
+
+        return view('admin.catalog.vehicle.edit', compact('vehicle'));
     }
 
     /**
@@ -104,7 +104,7 @@ class VehicleController extends Controller
     {
         $vehicle->update($request->all());
 
-        return redirect()->route('catalog.vehicles.index')
+        return redirect()->route('vehicles.index')
             ->with('success', 'Vehicle updated successfully');
     }
 
@@ -117,7 +117,7 @@ class VehicleController extends Controller
     {
         $vehicle = Vehicle::find($id)->delete();
 
-        return redirect()->route('catalog.vehicles.index')
+        return redirect()->route('vehicles.index')
             ->with('success', 'Vehicle deleted successfully');
     }
 }

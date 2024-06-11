@@ -22,10 +22,10 @@ class PassportCheckController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:passportChecks-list',  ['only' => ['index']]);
-        $this->middleware('permission:passportChecks-view',  ['only' => ['show']]);
+        $this->middleware('permission:passportChecks-list',   ['only' => ['index']]);
+        $this->middleware('permission:passportChecks-view',   ['only' => ['show']]);
         $this->middleware('permission:passportChecks-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:passportChecks-edit',  ['only' => ['edit', 'update']]);
+        $this->middleware('permission:passportChecks-edit',   ['only' => ['edit', 'update']]);
         $this->middleware('permission:passportChecks-delete', ['only' => ['destroy']]);
     }
 
@@ -61,7 +61,7 @@ class PassportCheckController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $passportCheck = PassportCheck::create($request->all());
-        return redirect()->route('catalog.passport-checks.index')
+        return redirect()->route('passport-checks.index')
             ->with('success', 'PassportCheck created successfully.');
     }
 
@@ -102,7 +102,7 @@ class PassportCheckController extends Controller
     {
         $passportCheck->update($request->all());
 
-        return redirect()->route('catalog.passport-checks.index')
+        return redirect()->route('passport-checks.index')
             ->with('success', 'PassportCheck updated successfully');
     }
 
@@ -115,7 +115,7 @@ class PassportCheckController extends Controller
     {
         $passportCheck = PassportCheck::find($id)->delete();
 
-        return redirect()->route('catalog.passport-checks.index')
+        return redirect()->route('passport-checks.index')
             ->with('success', 'PassportCheck deleted successfully');
     }
 }

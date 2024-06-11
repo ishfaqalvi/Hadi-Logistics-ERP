@@ -8,7 +8,6 @@
         <span>Dashboard</span>
     </a>
 </li>
-
 @can('jobes-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('jobes.*') ? 'active' : '' }}" href="{{ route('jobes.index') }}">
@@ -17,7 +16,6 @@
         </a>
     </li>
 @endcan
-
 @can('customers-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('customers.*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
@@ -26,7 +24,6 @@
         </a>
     </li>
 @endcan
-
 @can('consignees-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('consignees.*') ? 'active' : '' }}" href="{{ route('consignees.index') }}">
@@ -35,7 +32,6 @@
         </a>
     </li>
 @endcan
-
 @can('agents-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('agents.*') ? 'active' : '' }}" href="{{ route('agents.index') }}">
@@ -44,51 +40,49 @@
         </a>
     </li>
 @endcan
-
-@canany(['documents-list', 'verifications-list', 'passportChecks-list', 'vehicles-list', 'vehicleCompanies-list',
-    'sheds-list'])
-    <li class="nav-item nav-item-submenu {{ Route::is('catalog.*') ? 'nav-item-expanded nav-item-open' : '' }}">
+@canany(['documents-list', 'verifications-list', 'passportChecks-list', 'vehicles-list', 'vehicleCompanies-list', 'sheds-list'])
+    <li class="nav-item nav-item-submenu {{ request()->is('admin/catalog*') ? 'nav-item-expanded nav-item-open' : '' }}">
         <a href="#" class="nav-link ">
             <i class="ph-notebook"></i>
             <span>Catalog</span>
         </a>
-        <ul class="nav-group-sub collapse {{ Route::is('catalog.*') ? 'show' : '' }}">
+        <ul class="nav-group-sub collapse {{ request()->is('admin/catalog*') ? 'show' : '' }}">
             @can('documents-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.documents.index') }}"
-                        class="nav-link  {{ Route::is('catalog.documents.*') ? 'active' : '' }}">
+                    <a href="{{ route('documents.index') }}"
+                        class="nav-link  {{ Route::is('documents.*') ? 'active' : '' }}">
                         <span>Documents</span>
                     </a>
                 </li>
             @endcan
             @can('verifications-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.verifications.index') }}"
-                        class="nav-link  {{ Route::is('catalog.verifications.*') ? 'active' : '' }}">
+                    <a href="{{ route('verifications.index') }}"
+                        class="nav-link  {{ Route::is('verifications.*') ? 'active' : '' }}">
                         <span>Verifications</span>
                     </a>
                 </li>
             @endcan
             @can('passportChecks-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.passport-checks.index') }}"
-                        class="nav-link  {{ Route::is('catalog.passport-checks.*') ? 'active' : '' }}">
+                    <a href="{{ route('passport-checks.index') }}"
+                        class="nav-link  {{ Route::is('passport-checks.*') ? 'active' : '' }}">
                         <span>Passport Checks</span>
                     </a>
                 </li>
             @endcan
             @can('vehicles-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.vehicles.index') }}"
-                        class="nav-link  {{ Route::is('catalog.vehicles.*') ? 'active' : '' }}">
+                    <a href="{{ route('vehicles.index') }}"
+                        class="nav-link  {{ Route::is('vehicles.*') ? 'active' : '' }}">
                         <span>Vehicles</span>
                     </a>
                 </li>
             @endcan
             @can('vehicleCompanies-list')
                 <li class="nav-item  ">
-                    <a href="{{ route('catalog.vehicle-companies.index') }}"
-                        class="nav-link  {{ Route::is('catalog.vehicle-companies.*') ? 'active' : '' }}">
+                    <a href="{{ route('vehicle-companies.index') }}"
+                        class="nav-link  {{ Route::is('vehicle-companies.*') ? 'active' : '' }}">
                         <span>Vehicle Companies</span>
                     </a>
                 </li>
