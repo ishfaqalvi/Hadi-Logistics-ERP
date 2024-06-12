@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('passport_check_id')->constrained()->cascadeOnDelete();
             $table->boolean('checked')->default(0);
             $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 

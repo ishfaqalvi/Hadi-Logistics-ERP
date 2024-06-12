@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('verification_id')->constrained()->cascadeOnDelete();
             $table->string('value')->nullable();
             $table->text('description')->nullable();
+            $table->timestamps();
         });
     }
 

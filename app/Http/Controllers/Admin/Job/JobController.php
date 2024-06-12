@@ -59,6 +59,7 @@ class JobController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        dd($request->all());
        $job = Job::create($request->all());
         return redirect()->route('jobs.index')
             ->with('success', 'Job created successfully.');

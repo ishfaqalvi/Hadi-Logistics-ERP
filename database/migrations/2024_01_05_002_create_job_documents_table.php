@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('submitted_remarks')->nullable();
             $table->unsignedBigInteger('returned_at')->nullable();
             $table->text('returned_remarks')->nullable();
+            $table->timestamps();
         });
     }
 
