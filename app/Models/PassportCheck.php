@@ -30,4 +30,12 @@ class PassportCheck extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['title','status','description'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function jobPassportCheck()
+    {
+        return $this->hasOne('App\Models\JobPassportCheck', 'passport_check_id', 'id');
+    }
 }

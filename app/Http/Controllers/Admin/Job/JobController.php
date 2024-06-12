@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Job;
 use App\Http\Controllers\Controller;
 
 use App\Models\{Job,Vehicle};
@@ -35,7 +35,7 @@ class JobController extends Controller
      */
     public function index(): View
     {
-        $jobs = Job::get();
+        $jobs = Job::with('customer', 'vehicle', 'consignee')->get();
 
         return view('admin.job.index', compact('jobs'));
     }

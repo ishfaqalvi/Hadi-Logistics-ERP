@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
  * Class JobDocument
  *
  * @property $id
- * @property $jobe_id
+ * @property $job_id
  * @property $document_id
  * @property $submitted_at
  * @property $attachment
@@ -18,15 +18,15 @@ use OwenIt\Auditing\Contracts\Auditable;
  * @property $returned_remarks
  *
  * @property Document $document
- * @property Jobe $jobe
+ * @property Job $job
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class JobesDocument extends Model implements Auditable
+class JobDocument extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-
+    
 
     protected $perPage = 20;
 
@@ -35,7 +35,7 @@ class JobesDocument extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['jobe_id', 'document_id', 'submitted_at', 'attachment', 'submitted_remarks', 'returned_at', 'returned_remarks'];
+    protected $fillable = ['job_id','document_id','submitted_at','attachment','submitted_remarks','returned_at','returned_remarks'];
 
 
     /**
@@ -45,12 +45,14 @@ class JobesDocument extends Model implements Auditable
     {
         return $this->hasOne('App\Models\Document', 'id', 'document_id');
     }
-
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function jobe()
+    public function job()
     {
-        return $this->hasOne('App\Models\Jobe', 'id', 'jobe_id');
+        return $this->hasOne('App\Models\Job', 'id', 'job_id');
     }
+    
+
 }

@@ -34,8 +34,8 @@ return new class extends Migration
             $table->foreignId('shed_id')->constrained()->cascadeOnDelete()->nullable();
             $table->string('vessel')->nullable();
             $table->unsignedBigInteger('eta')->nullable();
-            $table->string('igm')->nullable();
-            $table->unsignedBigInteger('index')->nullable();
+            $table->unsignedBigInteger('igm')->nullable();
+            $table->string('index')->nullable();
             $table->timestamps();
         });
     }

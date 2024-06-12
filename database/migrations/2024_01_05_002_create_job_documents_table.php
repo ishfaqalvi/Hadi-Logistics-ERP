@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('job_id')->constrained()->cascadeOnDelete();
             $table->foreignId('document_id')->constrained()->cascadeOnDelete();
-            $table->timestamp('submitted_at')->nullable();
+            $table->unsignedBigInteger('submitted_at')->nullable();
             $table->string('attachment');
             $table->text('submitted_remarks')->nullable();
-            $table->timestamp('returned_at')->nullable();
+            $table->unsignedBigInteger('returned_at')->nullable();
             $table->text('returned_remarks')->nullable();
         });
     }

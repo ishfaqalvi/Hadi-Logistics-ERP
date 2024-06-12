@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
- * Class JobesPassportCheck
+ * Class JobPassportCheck
  *
  * @property $id
- * @property $jobe_id
+ * @property $job_id
  * @property $passport_check_id
  * @property $checked
  * @property $description
  *
- * @property Jobe $jobe
+ * @property Job $job
  * @property PassportCheck $passportCheck
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class JobesPassportCheck extends Model implements Auditable
+class JobPassportCheck extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
@@ -32,15 +32,15 @@ class JobesPassportCheck extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['jobe_id','passport_check_id','checked','description'];
+    protected $fillable = ['job_id','passport_check_id','checked','description'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function jobe()
+    public function job()
     {
-        return $this->hasOne('App\Models\Jobe', 'id', 'jobe_id');
+        return $this->hasOne('App\Models\Job', 'id', 'job_id');
     }
     
     /**

@@ -59,12 +59,12 @@
     </div>
     <div class="form-group col-lg-4 mb-3">
         {{ Form::label('bl_date','BL Date') }}
-        {{ Form::text('bl_date', $job->bl_date, ['class' => 'form-control bl_date' . ($errors->has('bl_date') ? ' is-invalid' : ''), 'placeholder' => 'BL Date', 'required']) }}
+        {{ Form::text('bl_date', date('m-d-Y', $job->bl_date), ['class' => 'form-control bl_date' . ($errors->has('bl_date') ? ' is-invalid' : ''), 'placeholder' => 'BL Date', 'required']) }}
         {!! $errors->first('bl_date', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-lg-4 mb-3">
         {{ Form::label('last_entry','Last Entry Date') }}
-        {{ Form::text('last_entry', $job->last_entry, ['class' => 'form-control last_entry' . ($errors->has('last_entry') ? ' is-invalid' : ''), 'placeholder' => 'Last Entry Date', 'required','id' => 'last_entry']) }}
+        {{ Form::text('last_entry', date('m-d-Y', $job->last_entry), ['class' => 'form-control last_entry' . ($errors->has('last_entry') ? ' is-invalid' : ''), 'placeholder' => 'Last Entry Date', 'required','id' => 'last_entry']) }}
         {!! $errors->first('last_entry', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-lg-4 mb-3">
@@ -89,7 +89,7 @@
     </div>
     <div class="form-group col-lg-4 mb-3">
         {{ Form::label('eta','ETA') }}
-        {{ Form::text('eta', $job->eta, ['class' => 'form-control eta' . ($errors->has('eta') ? ' is-invalid' : ''), 'placeholder' => 'Eta','required']) }}
+        {{ Form::text('eta', date('m-d-Y', $job->eta), ['class' => 'form-control eta' . ($errors->has('eta') ? ' is-invalid' : ''), 'placeholder' => 'Eta','required']) }}
         {!! $errors->first('eta', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-lg-4 mb-3">
