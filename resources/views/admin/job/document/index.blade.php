@@ -175,6 +175,18 @@
                     }
                 }
             });
+            ['.submitted_at','.returned_at'].forEach(selector => {
+            const element = document.querySelector(selector);
+            if (element) {
+                new Datepicker(element, {
+                    container: '.content-inner',
+                    buttonClass: 'btn',
+                    prevArrow: document.dir == 'rtl' ? '&rarr;' : '&larr;',
+                    nextArrow: document.dir == 'rtl' ? '&larr;' : '&rarr;',
+                    autohide: true
+                });
+            }
+        });
         });
     </script>
 @endsection
