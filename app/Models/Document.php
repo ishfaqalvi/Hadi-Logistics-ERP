@@ -40,9 +40,9 @@ class Document extends Model implements Auditable
         return $query->where('status', 1);
     }
 
-    public function jobe()
+    public function job()
     {
-        return $this->belongsToMany(Jobe::class, 'documents_jobes', 'document_id', 'jobe_id')
+        return $this->belongsToMany(Job::class, 'documents_job', 'document_id', 'job_id')
             ->withPivot('submitted_at', 'attachment', 'submitted_remarks', 'returned_at', 'returned_remarks');
     }
 }

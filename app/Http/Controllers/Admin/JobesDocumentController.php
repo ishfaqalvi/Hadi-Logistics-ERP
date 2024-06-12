@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Document;
-use App\Models\Jobe;
-use App\Models\JobesDocument;
+use App\Models\Job;
+use App\Models\JobDocument;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Class JobesDocumentController
+ * Class JobDocumentController
  * @package App\Http\Controllers
  */
-class JobesDocumentController extends Controller
+class JobDocumentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +23,11 @@ class JobesDocumentController extends Controller
      */
     function __construct()
     {
-        // $this->middleware('permission:JobesDocuments-list',  ['only' => ['index']]);
-        // $this->middleware('permission:JobesDocuments-view',  ['only' => ['show']]);
-        // $this->middleware('permission:JobesDocuments-create',['only' => ['create','store']]);
-        // $this->middleware('permission:JobesDocuments-edit',  ['only' => ['edit','update']]);
-        // $this->middleware('permission:JobesDocuments-delete',['only' => ['destroy']]);
+        // $this->middleware('permission:JobDocuments-list',  ['only' => ['index']]);
+        // $this->middleware('permission:JobDocuments-view',  ['only' => ['show']]);
+        // $this->middleware('permission:JobDocuments-create',['only' => ['create','store']]);
+        // $this->middleware('permission:JobDocuments-edit',  ['only' => ['edit','update']]);
+        // $this->middleware('permission:JobDocuments-delete',['only' => ['destroy']]);
     }
 
     /**
@@ -37,10 +37,10 @@ class JobesDocumentController extends Controller
      */
     public function index($id): View
     {
-        $jobe = Jobe::find($id);
+        $job = Job::find($id);
         $documents = Document::get();
 
-        return view('admin.jobe.documents.index', compact('documents', 'jobe'));
+        return view('admin.job.documents.index', compact('documents', 'job'));
     }
 
 
@@ -52,9 +52,9 @@ class JobesDocumentController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $JobesDocument = JobesDocument::create($request->all());
-        return redirect()->route('documents-jobes.index')
-            ->with('success', 'JobesDocument created successfully.');
+        $jobDocument = JobDocument::create($request->all());
+        return redirect()->route('documents-job.index')
+            ->with('success', 'JobDocument created successfully.');
     }
 
     /**
@@ -65,9 +65,9 @@ class JobesDocumentController extends Controller
      */
     public function show($id): View
     {
-        $JobesDocument = JobesDocument::find($id);
+        $jobDocument = JobDocument::find($id);
 
-        return view('admin.documents-jobe.show', compact('JobesDocument'));
+        return view('admin.documents-job.show', compact('JobDocument'));
     }
 
     /**
@@ -78,24 +78,24 @@ class JobesDocumentController extends Controller
      */
     public function edit($id): View
     {
-        $JobesDocument = JobesDocument::find($id);
+        $JobDocument = JobDocument::find($id);
 
-        return view('admin.documents-jobe.edit', compact('JobesDocument'));
+        return view('admin.documents-job.edit', compact('JobDocument'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  JobesDocument $JobesDocument
+     * @param  JobDocument $JobDocument
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JobesDocument $JobesDocument): RedirectResponse
+    public function update(Request $request, JobDocument $JobDocument): RedirectResponse
     {
-        $JobesDocument->update($request->all());
+        $JobDocument->update($request->all());
 
-        return redirect()->route('documents-jobes.index')
-            ->with('success', 'JobesDocument updated successfully');
+        return redirect()->route('documents-job.index')
+            ->with('success', 'JobDocument updated successfully');
     }
 
     /**
@@ -105,9 +105,9 @@ class JobesDocumentController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        $JobesDocument = JobesDocument::find($id)->delete();
+        $JobDocument = JobDocument::find($id)->delete();
 
-        return redirect()->route('documents-jobes.index')
-            ->with('success', 'JobesDocument deleted successfully');
+        return redirect()->route('documents-job.index')
+            ->with('success', 'JobDocument deleted successfully');
     }
 }

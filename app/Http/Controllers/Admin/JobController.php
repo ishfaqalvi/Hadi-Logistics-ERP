@@ -1,14 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
-use App\Models\Consignee;
-use App\Models\Customer;
-use App\Models\Document;
-use App\Models\Job;
-use App\Models\Shed;
-use App\Models\Vehicle;
+
+use App\Models\{Job,Vehicle};
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -28,9 +23,9 @@ class JobController extends Controller
     {
         $this->middleware('permission:jobs-list',  ['only' => ['index']]);
         $this->middleware('permission:jobs-view',  ['only' => ['show']]);
-        $this->middleware('permission:jobs-create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:jobs-edit',  ['only' => ['edit', 'update']]);
-        $this->middleware('permission:jobs-delete', ['only' => ['destroy']]);
+        $this->middleware('permission:jobs-create',['only' => ['create','store']]);
+        $this->middleware('permission:jobs-edit',  ['only' => ['edit','update']]);
+        $this->middleware('permission:jobs-delete',['only' => ['destroy']]);
     }
 
     /**
@@ -40,7 +35,8 @@ class JobController extends Controller
      */
     public function index(): View
     {
-        $jobs = Job::with('customer', 'consignee', 'vehicle.vehicleCompany')->get();
+        $jobs = Job::get();
+
         return view('admin.job.index', compact('jobs'));
     }
 
@@ -52,11 +48,7 @@ class JobController extends Controller
     public function create(): View
     {
         $job = new Job();
-        $customers = Customer::pluck('name', 'id');
-        $consignees = Consignee::pluck('name', 'id');
-        $vehicles = Vehicle::active()->pluck('title', 'id');
-        $sheds = Shed::pluck('title', 'id');
-        return view('admin.job.create', compact('job', 'customers', 'vehicles', 'consignees', 'sheds'));
+        return view('admin.job.create', compact('job'));
     }
 
     /**
@@ -67,7 +59,7 @@ class JobController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $job = Job::create($request->all());
+       $job = Job::create($request->all());
         return redirect()->route('jobs.index')
             ->with('success', 'Job created successfully.');
     }
@@ -94,11 +86,8 @@ class JobController extends Controller
     public function edit($id): View
     {
         $job = Job::find($id);
-        $customers = Customer::pluck('name', 'id');
-        $consignees = Consignee::pluck('name', 'id');
-        $vehicles = Vehicle::active()->pluck('title', 'id');
-        $sheds = Shed::pluck('title', 'id');
-        return view('admin.job.edit', compact('job', 'customers', 'vehicles', 'consignees', 'sheds'));
+
+        return view('admin.job.edit', compact('job'));
     }
 
     /**
@@ -127,5 +116,14 @@ class JobController extends Controller
 
         return redirect()->route('jobs.index')
             ->with('success', 'Job deleted successfully');
+    }
+
+     /**
+     * Get the specified resource in storage.
+     */
+    public function getVehicles(Request $request)
+    {
+        $data = Vehicle::active()->whereVehicleCompanyId($request->id)->get();
+        echo json_encode($data);
     }
 }

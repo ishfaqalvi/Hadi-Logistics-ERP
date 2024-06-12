@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jobe;
-use App\Models\JobesPassportCheck;
+use App\Models\Job;
+use App\Models\JobPassportCheck;
 use App\Models\PassportCheck;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Class JobesPassportCheckController
+ * Class JobsPassportCheckController
  * @package App\Http\Controllers
  */
-class JobesPassportCheckController extends Controller
+class JobPassportCheckController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +23,11 @@ class JobesPassportCheckController extends Controller
      */
     function __construct()
     {
-        // $this->middleware('permission:jobesPassportChecks-list',  ['only' => ['index']]);
-        // $this->middleware('permission:jobesPassportChecks-view',  ['only' => ['show']]);
-        // $this->middleware('permission:jobesPassportChecks-create', ['only' => ['create', 'store']]);
-        // $this->middleware('permission:jobesPassportChecks-edit',  ['only' => ['edit', 'update']]);
-        // $this->middleware('permission:jobesPassportChecks-delete', ['only' => ['destroy']]);
+        // $this->middleware('permission:jobsPassportChecks-list',  ['only' => ['index']]);
+        // $this->middleware('permission:jobsPassportChecks-view',  ['only' => ['show']]);
+        // $this->middleware('permission:jobsPassportChecks-create', ['only' => ['create', 'store']]);
+        // $this->middleware('permission:jobsPassportChecks-edit',  ['only' => ['edit', 'update']]);
+        // $this->middleware('permission:jobsPassportChecks-delete', ['only' => ['destroy']]);
     }
 
     /**
@@ -37,10 +37,10 @@ class JobesPassportCheckController extends Controller
      */
     public function index($id): View
     {
-        $jobe = Jobe::find($id);
+        $job = Job::find($id);
         $passports = PassportCheck::get();
 
-        return view('admin.jobe.passport-check.index', compact('passports', 'jobe'));
+        return view('admin.job.passport-check.index', compact('passports', 'job'));
     }
 
 
@@ -52,8 +52,8 @@ class JobesPassportCheckController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $jobesPassportCheck = JobesPassportCheck::create($request->all());
-        return redirect()->route('jobes-passport-checks.index')
-            ->with('success', 'JobesPassportCheck created successfully.');
+        $jobsPassportCheck = JobsPassportCheck::create($request->all());
+        return redirect()->route('jobs-passport-checks.index')
+            ->with('success', 'JobsPassportCheck created successfully.');
     }
 }

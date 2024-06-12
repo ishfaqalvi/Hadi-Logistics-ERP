@@ -11,6 +11,51 @@ Route::get('dashboard', DashboardController::class)->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------
+| Jobs Routes
+|--------------------------------------------------------------------------
+*/
+Route::controller(JobController::class)->prefix('jobs')->as('jobs.')->group(function () {
+    Route::get('list',                  'index'         )->name('index'         );
+    Route::get('create',                'create'        )->name('create'        );
+    Route::post('store',                'store'         )->name('store'         );
+    Route::get('edit/{id}',             'edit'          )->name('edit'          );
+    Route::get('show/{id}',             'show'          )->name('show'          );
+    Route::patch('update/{job}',        'update'        )->name('update'        );
+    Route::delete('delete/{id}',        'destroy'       )->name('destroy'       );
+    Route::get('get-vehicles',          'getVehicles'   )->name('getVehicles'   );
+});
+// Route::prefix('jobes')->as('jobes.')->group(function () {
+//     Route::get('{id}/documents',         'JobesDocumentController@index')->name('documents');
+//     Route::post('{id}/documents',        'JobesDocumentController@store')->name('documents-store');
+//     Route::get('{id}/verifications',     'JobesVerificationController@index')->name('verifications');
+//     Route::post('{id}/verifications',    'JobesVerificationController@store')->name('verifications-store');
+//     Route::get('{id}/passport',          'JobesPassportCheckController@index')->name('passport');
+//     Route::post('{id}/passport',         'JobesPassportCheckController@store')->name('passport-store');
+// });
+
+/*
+|--------------------------------------------------------------------------
+| Agents Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('agents', AgentController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Customers Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('customers', CustomerController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Consignees Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('consignees', ConsigneeController::class);
+
+/*
+|--------------------------------------------------------------------------
 | Catalog Routes
 |--------------------------------------------------------------------------
 */
@@ -74,42 +119,6 @@ Route::controller(SettingController::class)->prefix('settings')->as('settings.')
     Route::get('clear-cache',     'clearCache')->name('clear-cache');
     Route::post('save',         'save')->name('save');
 });
-
-/*
-|--------------------------------------------------------------------------
-| Agents Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('agents', AgentController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Customers Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('customers', CustomerController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Consignees Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('consignees', ConsigneeController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Jobes Routes
-|--------------------------------------------------------------------------
-*/
-Route::prefix('jobes')->as('jobes.')->group(function () {
-    Route::get('{id}/documents',         'JobesDocumentController@index')->name('documents');
-    Route::post('{id}/documents',        'JobesDocumentController@store')->name('documents-store');
-    Route::get('{id}/verifications',     'JobesVerificationController@index')->name('verifications');
-    Route::post('{id}/verifications',    'JobesVerificationController@store')->name('verifications-store');
-    Route::get('{id}/passport',          'JobesPassportCheckController@index')->name('passport');
-    Route::post('{id}/passport',         'JobesPassportCheckController@store')->name('passport-store');
-});
-Route::resource('jobes', JobeController::class);
 
 /*
 |--------------------------------------------------------------------------

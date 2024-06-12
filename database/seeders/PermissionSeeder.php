@@ -16,11 +16,11 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'jobes-list',
-            'jobes-view',
-            'jobes-create',
-            'jobes-edit',
-            'jobes-delete',
+            'jobs-list',
+            'jobs-view',
+            'jobs-create',
+            'jobs-edit',
+            'jobs-delete',
 
             'sheds-list',
             'sheds-view',

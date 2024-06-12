@@ -20,8 +20,6 @@ class Shed extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -30,7 +28,4 @@ class Shed extends Model implements Auditable
      * @var array
      */
     protected $fillable = ['title'];
-
-
-
 }

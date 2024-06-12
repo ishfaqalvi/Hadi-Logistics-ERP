@@ -8,11 +8,11 @@
         <span>Dashboard</span>
     </a>
 </li>
-@can('jobes-list')
+@can('jobs-list')
     <li class="nav-item">
-        <a class="nav-link {{ Route::is('jobes.*') ? 'active' : '' }}" href="{{ route('jobes.index') }}">
+        <a class="nav-link {{ Route::is('jobs.*') ? 'active' : '' }}" href="{{ route('jobs.index') }}">
             <i class="ph-check-square"></i>
-            <span>Jobes</span>
+            <span>Jobs</span>
         </a>
     </li>
 @endcan

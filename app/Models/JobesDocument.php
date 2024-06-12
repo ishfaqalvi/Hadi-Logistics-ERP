@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
- * Class JobesDocument
+ * Class JobDocument
  *
  * @property $id
  * @property $jobe_id

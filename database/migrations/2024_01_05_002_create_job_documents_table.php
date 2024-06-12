@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('jobes_documents', function (Blueprint $table) {
+        Schema::create('job_documents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jobe_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('job_id')->constrained()->cascadeOnDelete();
             $table->foreignId('document_id')->constrained()->cascadeOnDelete();
             $table->timestamp('submitted_at')->nullable();
             $table->string('attachment');
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents_jobes');
+        Schema::dropIfExists('job_documents');
     }
 };

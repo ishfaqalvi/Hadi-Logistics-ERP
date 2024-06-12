@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
@@ -34,7 +33,7 @@ use OwenIt\Auditing\Contracts\Auditable;
  *
  * @property Consignee $consignee
  * @property Customer $customer
- * @property JobDocument[] $JobDocuments
+ * @property JobDocument[] $jobDocuments
  * @property JobPassportCheck[] $jobPassportChecks
  * @property JobVerification[] $jobVerifications
  * @property Shed $shed
@@ -53,36 +52,96 @@ class Job extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['job_no', 'customer_id', 'vehicle_id', 'vehicle_year', 'vehicle_chasis', 'consignee_id', 'type', 'notify', 'shipping_line_name', 'bl_no', 'bl_date', 'last_entry', 'last_entry_to_bl_days', 'collectortae', 'shed_id', 'vessel', 'eta', 'igm', 'index'];
-
-
-
+    protected $fillable = [
+        'job_no',
+        'customer_id',
+        'agent_id',
+        'vehicle_company_id',
+        'vehicle_id',
+        'vehicle_year',
+        'vehicle_chasis',
+        'consignee_id',
+        'type',
+        'notify',
+        'shipping_line_name',
+        'bl_no',
+        'bl_date',
+        'last_entry',
+        'last_entry_to_bl_days',
+        'collectortae',
+        'shed_id',
+        'vessel',
+        'eta',
+        'igm',
+        'index'
+    ];
 
     /**
-     * Interact with the date.
+     * Boot method to increament in order.
      */
-    public function getLastEntryAttribute($value)
+    protected static function booted()
     {
-        return date('Y-m-d', $value);
+        static::creating(function ($job) {
+            $highestOrder = static::max('id') + 1;
+            $job->job_no = 'PSS-' . str_pad($highestOrder, 3, '0', STR_PAD_LEFT) . '-' . date('y');
+        });
     }
 
     /**
      * Interact with the date.
      */
-    public function getEtaAttribute($value)
+    public function setLastEntryAttribute($value)
     {
-        return date('Y-m-d', $value);
+        $this->attributes['last_entry'] = strtotime($value);
     }
 
     /**
      * Interact with the date.
      */
-    public function getBlDateAttribute($value)
+    public function setBlDateAttribute($value)
     {
-        return date('Y-m-d', $value);
+        $this->attributes['bl_date'] = strtotime($value);
     }
 
+    /**
+     * Interact with the date.
+     */
+    public function setEtaAttribute($value)
+    {
+        $this->attributes['eta'] = strtotime($value);
+    }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function customer()
+    {
+        return $this->hasOne('App\Models\Customer', 'id', 'customer_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function agent()
+    {
+        return $this->hasOne('App\Models\Agent', 'id', 'agent_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function vehicleCompany()
+    {
+        return $this->hasOne('App\Models\VehicleCompany', 'id', 'vehicle_company_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function vehicle()
+    {
+        return $this->hasOne('App\Models\Vehicle', 'id', 'vehicle_id');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -95,15 +154,25 @@ class Job extends Model implements Auditable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function customer()
+    public function shed()
     {
-        return $this->hasOne('App\Models\Customer', 'id', 'customer_id');
+        return $this->hasOne('App\Models\Shed', 'id', 'shed_id');
     }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function JobDocuments()
+    public function jobDocuments()
     {
         return $this->hasMany('App\Models\JobDocument', 'job_id', 'id');
     }
@@ -124,19 +193,7 @@ class Job extends Model implements Auditable
         return $this->hasMany('App\Models\JobVerification', 'job_id', 'id');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function shed()
-    {
-        return $this->hasOne('App\Models\Shed', 'id', 'shed_id');
-    }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function vehicle()
-    {
-        return $this->hasOne('App\Models\Vehicle', 'id', 'vehicle_id');
-    }
+
+
 }

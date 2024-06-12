@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Jobe;
-use App\Models\JobesVerification;
+use App\Models\Job;
+use App\Models\JobVerification;
 use App\Models\Verification;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
 /**
- * Class JobesVerificationController
+ * Class JobsVerificationController
  * @package App\Http\Controllers
  */
-class JobesVerificationController extends Controller
+class JobVerificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +23,11 @@ class JobesVerificationController extends Controller
      */
     function __construct()
     {
-        // $this->middleware('permission:jobesVerifications-list',  ['only' => ['index']]);
-        // $this->middleware('permission:jobesVerifications-view',  ['only' => ['show']]);
-        // $this->middleware('permission:jobesVerifications-create',['only' => ['create','store']]);
-        // $this->middleware('permission:jobesVerifications-edit',  ['only' => ['edit','update']]);
-        // $this->middleware('permission:jobesVerifications-delete',['only' => ['destroy']]);
+        // $this->middleware('permission:jobsVerifications-list',  ['only' => ['index']]);
+        // $this->middleware('permission:jobsVerifications-view',  ['only' => ['show']]);
+        // $this->middleware('permission:jobsVerifications-create',['only' => ['create','store']]);
+        // $this->middleware('permission:jobsVerifications-edit',  ['only' => ['edit','update']]);
+        // $this->middleware('permission:jobsVerifications-delete',['only' => ['destroy']]);
     }
 
     /**
@@ -37,10 +37,10 @@ class JobesVerificationController extends Controller
      */
     public function index($id): View
     {
-        $jobe = Jobe::find($id);
+        $job = Job::find($id);
         $verifications = Verification::get();
         // dd($verifications);
-        return view('admin.jobe.verification.index', compact('verifications', 'jobe'));
+        return view('admin.job.verification.index', compact('verifications', 'job'));
     }
 
     /**
@@ -50,8 +50,8 @@ class JobesVerificationController extends Controller
      */
     public function create(): View
     {
-        $jobesVerification = new JobesVerification();
-        return view('admin.jobes-verification.create', compact('jobesVerification'));
+        $jobsVerification = new JobVerification();
+        return view('admin.jobs-verification.create', compact('jobsVerification'));
     }
 
     /**
@@ -62,9 +62,9 @@ class JobesVerificationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $jobesVerification = JobesVerification::create($request->all());
-        return redirect()->route('jobes-verifications.index')
-            ->with('success', 'JobesVerification created successfully.');
+        $jobsVerification = JobVerification::create($request->all());
+        return redirect()->route('jobs-verifications.index')
+            ->with('success', 'JobsVerification created successfully.');
     }
 
     /**
@@ -75,9 +75,9 @@ class JobesVerificationController extends Controller
      */
     public function show($id): View
     {
-        $jobesVerification = JobesVerification::find($id);
+        $jobsVerification = JobsVerification::find($id);
 
-        return view('admin.jobes-verification.show', compact('jobesVerification'));
+        return view('admin.jobs-verification.show', compact('jobsVerification'));
     }
 
     /**
@@ -88,24 +88,24 @@ class JobesVerificationController extends Controller
      */
     public function edit($id): View
     {
-        $jobesVerification = JobesVerification::find($id);
+        $jobsVerification = JobsVerification::find($id);
 
-        return view('admin.jobes-verification.edit', compact('jobesVerification'));
+        return view('admin.jobs-verification.edit', compact('jobsVerification'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  JobesVerification $jobesVerification
+     * @param  JobsVerification $jobsVerification
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JobesVerification $jobesVerification): RedirectResponse
+    public function update(Request $request, JobsVerification $jobsVerification): RedirectResponse
     {
-        $jobesVerification->update($request->all());
+        $jobsVerification->update($request->all());
 
-        return redirect()->route('jobes-verifications.index')
-            ->with('success', 'JobesVerification updated successfully');
+        return redirect()->route('jobs-verifications.index')
+            ->with('success', 'JobsVerification updated successfully');
     }
 
     /**
@@ -115,9 +115,9 @@ class JobesVerificationController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        $jobesVerification = JobesVerification::find($id)->delete();
+        $jobsVerification = JobsVerification::find($id)->delete();
 
-        return redirect()->route('jobes-verifications.index')
-            ->with('success', 'JobesVerification deleted successfully');
+        return redirect()->route('jobs-verifications.index')
+            ->with('success', 'JobsVerification deleted successfully');
     }
 }
