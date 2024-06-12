@@ -63,11 +63,11 @@
                 <tr>
                     <td>{{ ++$key }}</td>
                     <td>{{ $job->job_no }}</td>
-                    <td>{{ $job->customer_id }}</td>
-                    <td>{{ $job->vehicle_id }}</td>
+                    <td>{{ $job->customer->name }}</td>
+                    <td>{{ $job->vehicle->title }}</td>
                     <td>{{ $job->vehicle_year }}</td>
                     <td>{{ $job->vehicle_chasis }}</td>
-                    <td>{{ $job->consignee_id }}</td>
+                    <td>{{ $job->consignee->name }}</td>
                     <td>{{ $job->type }}</td>
                     {{-- <td>{{ $job->notify }}</td>
                     <td>{{ $job->shipping_line_name }}</td>

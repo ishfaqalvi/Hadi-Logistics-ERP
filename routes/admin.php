@@ -14,23 +14,17 @@ Route::get('dashboard', DashboardController::class)->name('dashboard');
 | Jobs Routes
 |--------------------------------------------------------------------------
 */
-Route::controller(JobController::class)->prefix('jobs')->as('jobs.')->group(function () {
-    Route::get('list',                  'index'         )->name('index'         );
-    Route::get('create',                'create'        )->name('create'        );
-    Route::post('store',                'store'         )->name('store'         );
-    Route::get('edit/{id}',             'edit'          )->name('edit'          );
-    Route::get('show/{id}',             'show'          )->name('show'          );
-    Route::patch('update/{job}',        'update'        )->name('update'        );
-    Route::delete('delete/{id}',        'destroy'       )->name('destroy'       );
-    Route::get('get-vehicles',          'getVehicles'   )->name('getVehicles'   );
-});
-// Route::prefix('jobes')->as('jobes.')->group(function () {
-//     Route::get('{id}/documents',         'JobesDocumentController@index')->name('documents');
-//     Route::post('{id}/documents',        'JobesDocumentController@store')->name('documents-store');
-//     Route::get('{id}/verifications',     'JobesVerificationController@index')->name('verifications');
-//     Route::post('{id}/verifications',    'JobesVerificationController@store')->name('verifications-store');
-//     Route::get('{id}/passport',          'JobesPassportCheckController@index')->name('passport');
-//     Route::post('{id}/passport',         'JobesPassportCheckController@store')->name('passport-store');
+Route::prefix('/jobs')->namespace('\App\Http\Controllers\Admin\Job')->group(__DIR__.'/jobs.php');
+
+// Route::controller(JobController::class)->prefix('jobs')->as('jobs.')->group(function () {
+//     Route::get('list',                  'index'         )->name('index'         );
+//     Route::get('create',                'create'        )->name('create'        );
+//     Route::post('store',                'store'         )->name('store'         );
+//     Route::get('edit/{id}',             'edit'          )->name('edit'          );
+//     Route::get('show/{id}',             'show'          )->name('show'          );
+//     Route::patch('update/{job}',        'update'        )->name('update'        );
+//     Route::delete('delete/{id}',        'destroy'       )->name('destroy'       );
+//     Route::get('get-vehicles',          'getVehicles'   )->name('getVehicles'   );
 // });
 
 /*

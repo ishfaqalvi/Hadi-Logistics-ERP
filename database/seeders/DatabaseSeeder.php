@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
         $this->call(DocumentSeeder::class);
         $this->call(PassportCheckSeeder::class);
         $this->call(VerificationSeeder::class);
+        $this->call(ShedSeeder::class);
+        $this->call(VehicleSeeder::class);
+        $this->call(AgentSeeder::class);
+        $this->call(ConsigneeSeeder::class);
+        $this->call(CustomerSeeder::class);
     }
 }
