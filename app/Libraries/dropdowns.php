@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\{VehicleCompany,Customer,Agent,Consignee,Shed};
+use App\Models\{VehicleCompany,Customer,Agent,Consignee, Office, Shed};
 
 /**
  * Get listing of a resource.
@@ -50,4 +50,14 @@ function consignees()
 function sheds()
 {
     return Shed::pluck('title','id');
+}
+
+/**
+ * Get listing of a resource.
+ *
+ * @return \Illuminate\Http\Response
+ */
+function offices()
+{
+    return Office::pluck('title','id');
 }

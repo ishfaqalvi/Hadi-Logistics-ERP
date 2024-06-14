@@ -72,15 +72,15 @@
                 <form method="POST" action="{{ route('jobs.verification.store') }}" class="validate" role="form"
                     enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="job_id", value="{{ $job->id ?? '' }}">
                     <div class="row">
-
                         @foreach ($verifications as $verification)
                             <div class="col-md-4">
                                 <div class="fw-bold mb-2">{{ $verification->title }}:</div>
                                 <div class="form-group mb-3">
-                                    {{-- {{ Form::label('value') }} --}}
-                                    {{ Form::text('value', null, ['class' => 'form-control' . ($errors->has('value') ? ' is-invalid' : ''), 'placeholder' => 'Value', 'required']) }}
-                                    {!! $errors->first('value', '<div class="invalid-feedback">:message</div>') !!}
+                                    <input type="text" name="values[{{ $verification->id }}]" class="form-control"
+                                        placeholder="Value" value="{{ $verification->jobVerification->value ?? null }}">
+
                                 </div>
                                 {{-- <div class="form-group mb-3">
                                     {{ Form::label('description') }}

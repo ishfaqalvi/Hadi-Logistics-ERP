@@ -16,6 +16,22 @@
         </a>
     </li>
 @endcan
+@can('expenditures-list')
+    <li class="nav-item">
+        <a class="nav-link {{ Route::is('expenditures.*') ? 'active' : '' }}" href="{{ route('expenditures.index') }}">
+            <i class="ph-check-square"></i>
+            <span>Expenditures</span>
+        </a>
+    </li>
+@endcan
+@can('offices-list')
+    <li class="nav-item">
+        <a class="nav-link {{ Route::is('offices.*') ? 'active' : '' }}" href="{{ route('offices.index') }}">
+            <i class="ph-check-square"></i>
+            <span>Offices</span>
+        </a>
+    </li>
+@endcan
 @can('customers-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('customers.*') ? 'active' : '' }}" href="{{ route('customers.index') }}">
