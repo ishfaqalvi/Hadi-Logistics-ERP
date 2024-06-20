@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('job_passport_checks', function (Blueprint $table) {
+        Schema::create('offices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('passport_check_id')->constrained()->cascadeOnDelete();
-            $table->boolean('checked')->default(0);
-            $table->text('description')->nullable();
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_passport_checks');
+        Schema::dropIfExists('offices');
     }
 };

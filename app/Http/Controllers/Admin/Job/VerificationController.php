@@ -8,6 +8,7 @@ use App\Models\Verification;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class JobVerificationController
@@ -38,7 +39,7 @@ class VerificationController extends Controller
     {
         // $jobVerifications = JobVerification::get();
         $job =  Job::find($id);
-        $verifications = Verification::get();
+        $verifications = Verification::with(['jobVerification'])->get();
         return view('admin.job.verification.index', compact('job', 'verifications'));
     }
 
@@ -61,9 +62,26 @@ class VerificationController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       $jobVerification = JobVerification::create($request->all());
-        return redirect()->route('job-verifications.index')
-            ->with('success', 'JobVerification created successfully.');
+        try {
+            $jobId = $request->job_id;
+            DB::beginTransaction();
+            $data = [];
+            JobVerification::where('job_id', $jobId)->delete();
+            foreach ($request->values as $index => $value) {
+                $data[] = [
+                    'job_id' => $jobId,
+                    'verification_id' => $index,
+                    'value' => $value
+                ];
+            }
+            $jobPassportCheck = JobVerification::insert($data);
+        DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return redirect()->back()->withErrors(['msg' => $th->getMessage()]);
+        }
+        return redirect()->route('jobs.verification.index', $jobId)
+            ->with('success', 'Job verification stored successfully.');
     }
 
     /**

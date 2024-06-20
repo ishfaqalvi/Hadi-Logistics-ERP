@@ -70,6 +70,18 @@ class PermissionSeeder extends Seeder
             'consignees-edit',
             'consignees-delete',
 
+            'expenditures-list',
+            'expenditures-view',
+            'expenditures-create',
+            'expenditures-edit',
+            'expenditures-delete',
+
+            'offices-list',
+            'offices-view',
+            'offices-create',
+            'offices-edit',
+            'offices-delete',
+
             'customers-list',
             'customers-view',
             'customers-create',

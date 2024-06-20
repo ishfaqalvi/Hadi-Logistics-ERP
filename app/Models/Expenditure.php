@@ -6,21 +6,24 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 
 /**
- * Class Verification
+ * Class Expenditure
  *
  * @property $id
+ * @property $office_id
  * @property $title
- * @property $status
- * @property $description
+ * @property $type
  * @property $created_at
  * @property $updated_at
  *
+ * @property Office $office
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Verification extends Model implements Auditable
+class Expenditure extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
+
+    
 
     protected $perPage = 20;
 
@@ -29,13 +32,16 @@ class Verification extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['title','status','description'];
+    protected $fillable = ['office_id','title','type'];
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function jobVerification()
+    public function office()
     {
-        return $this->hasOne('App\Models\JobVerification', 'verification_id', 'id');
+        return $this->hasOne('App\Models\Office', 'id', 'office_id');
     }
+    
+
 }

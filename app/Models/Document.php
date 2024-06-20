@@ -40,6 +40,14 @@ class Document extends Model implements Auditable
         return $query->where('status', 1);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function jobDocument()
+    {
+        return $this->hasOne('App\Models\JobDocument', 'document_id', 'id');
+    }
+
     public function job()
     {
         return $this->belongsToMany(Job::class, 'documents_job', 'document_id', 'job_id')

@@ -90,30 +90,34 @@
                         @foreach ($documents as $document)
                             <div class="tab-pane fade {{ $loop->first ? 'active show' : '' }} "
                                 id="tab-{{ $document->id }}" role="tabpanel">
-                                <form action="">
+                                <form method="POST" action="{{ route('jobs.document.store') }}" class="validate"
+                                    role="form" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="job_id" value="{{ $job->id ?? null }}">
+                                    <input type="hidden" name="document_id" value="{{ $document->id ?? null }}">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group mb-3">
                                                 {{ Form::label('submitted_at', 'Submitted At') }}
-                                                {{ Form::text('submitted_at', '', ['class' => 'form-control submitted_at' . ($errors->has('submitted_at') ? ' is-invalid' : ''), 'placeholder' => 'Submitted At', 'required']) }}
+                                                {{ Form::text('submitted_at', (isset($document->jobDocument->submitted_at) ? $document->jobDocument->submitted_at : ''), ['class' => 'form-control submitted_at' . ($errors->has('submitted_at') ? ' is-invalid' : ''), 'placeholder' => 'Submitted At', 'required']) }}
                                                 {!! $errors->first('submitted_at', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 {{ Form::label('submitted_remarks', 'Submitted Remarks') }}
-                                                {{ Form::text('submitted_remarks', '', ['class' => 'form-control' . ($errors->has('submitted_remarks') ? ' is-invalid' : ''), 'placeholder' => 'Submitted Remarks']) }}
+                                                {{ Form::text('submitted_remarks', (isset($document->jobDocument->submitted_remarks) ? $document->jobDocument->submitted_remarks : ''), ['class' => 'form-control' . ($errors->has('submitted_remarks') ? ' is-invalid' : ''), 'placeholder' => 'Submitted Remarks']) }}
                                                 {!! $errors->first('submitted_remarks', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
 
                                             <div class="form-group mb-3">
                                                 {{ Form::label('returned_at', 'Returned At') }}
-                                                {{ Form::text('returned_at', '', ['class' => 'form-control returned_at' . ($errors->has('returned_at') ? ' is-invalid' : ''), 'placeholder' => 'Returned At', 'required']) }}
+                                                {{ Form::text('returned_at', (isset($document->jobDocument->returned_at) ? $document->jobDocument->returned_at : ''), ['class' => 'form-control returned_at' . ($errors->has('returned_at') ? ' is-invalid' : ''), 'placeholder' => 'Returned At', 'required']) }}
                                                 {!! $errors->first('returned_at', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
 
                                             <div class="form-group mb-3">
-                                                {{ Form::label('returned_remarks', 'Submitted Remarks') }}
-                                                {{ Form::text('returned_remarks', '', ['class' => 'form-control' . ($errors->has('returned_remarks') ? ' is-invalid' : ''), 'placeholder' => 'Returned Remarks']) }}
+                                                {{ Form::label('returned_remarks', 'Returned Remarks') }}
+                                                {{ Form::text('returned_remarks', (isset($document->jobDocument->returned_remarks) ? $document->jobDocument->returned_remarks : ''), ['class' => 'form-control' . ($errors->has('returned_remarks') ? ' is-invalid' : ''), 'placeholder' => 'Returned Remarks']) }}
                                                 {!! $errors->first('returned_remarks', '<div class="invalid-feedback">:message</div>') !!}
                                             </div>
 
@@ -121,7 +125,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             {{ Form::label('attachment') }}
-                                            {{ Form::file('attachment', ['class' => 'form-control dropify' . ($errors->has('attachment') ? ' is-invalid' : ''), 'data-default-file' => null, 'data-height' => '270']) }}
+                                            {{ Form::file('attachment', ['class' => 'form-control dropify' . ($errors->has('attachment') ? ' is-invalid' : ''), 'data-default-file' => (isset($document->jobDocument->attachment) ? $document->jobDocument->attachment : ''), 'data-height' => '270']) }}
                                             {!! $errors->first('attachment', '<div class="invalid-feedback">:message</div>') !!}
                                         </div>
                                     </div>
@@ -175,18 +179,18 @@
                     }
                 }
             });
-            ['.submitted_at','.returned_at'].forEach(selector => {
-            const element = document.querySelector(selector);
-            if (element) {
-                new Datepicker(element, {
-                    container: '.content-inner',
-                    buttonClass: 'btn',
-                    prevArrow: document.dir == 'rtl' ? '&rarr;' : '&larr;',
-                    nextArrow: document.dir == 'rtl' ? '&larr;' : '&rarr;',
-                    autohide: true
-                });
-            }
-        });
+            ['.submitted_at', '.returned_at'].forEach(selector => {
+                const element = document.querySelector(selector);
+                if (element) {
+                    new Datepicker(element, {
+                        container: '.content-inner',
+                        buttonClass: 'btn',
+                        prevArrow: document.dir == 'rtl' ? '&rarr;' : '&larr;',
+                        nextArrow: document.dir == 'rtl' ? '&larr;' : '&rarr;',
+                        autohide: true
+                    });
+                }
+            });
         });
     </script>
 @endsection

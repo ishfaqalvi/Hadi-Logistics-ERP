@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin\Job;
+
 use App\Http\Controllers\Controller;
 use App\Models\Document;
 use App\Models\Job;
@@ -37,7 +38,10 @@ class DocumentController extends Controller
     public function index($id): View
     {
         $job =  Job::find($id);
-        $documents = Document::get();
+        $documents = Document::with(['jobDocument' => function ($query) use ($job) {
+            $query->where('job_id', $job->id);
+        }])->get();
+        // dd($documents);
         // $jobDocuments = JobDocument::get();
 
         return view('admin.job.document.index', compact('documents', 'job'));
@@ -62,8 +66,9 @@ class DocumentController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       $jobDocument = JobDocument::create($request->all());
-        return redirect()->route('job-documents.index')
+        // dd($request->all());
+        $jobDocument = JobDocument::create($request->all());
+        return redirect()->route('jobs.document.index', $request->job_id)
             ->with('success', 'JobDocument created successfully.');
     }
 

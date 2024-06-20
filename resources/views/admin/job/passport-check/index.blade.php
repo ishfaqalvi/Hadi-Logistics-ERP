@@ -149,6 +149,13 @@
                     });
                 }
             });
+            $('.form-check-input-secondary').on('change', function() {
+                if ($('.form-check-input-secondary:checked').length === $('.form-check-input-secondary').length) {
+                    $('.select-all').prop('checked', true);
+                } else {
+                    $('.select-all').prop('checked', false);
+                }
+            });
         });
     </script>
 @endsection

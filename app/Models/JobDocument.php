@@ -26,7 +26,7 @@ class JobDocument extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
+
 
     protected $perPage = 20;
 
@@ -35,8 +35,65 @@ class JobDocument extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['job_id','document_id','submitted_at','attachment','submitted_remarks','returned_at','returned_remarks'];
+    protected $fillable = ['job_id', 'document_id', 'submitted_at', 'attachment', 'submitted_remarks', 'returned_at', 'returned_remarks'];
 
+    /**
+     * Interact with the date.
+     */
+    public function getSubmittedAtAttribute($value)
+    {
+        return date('Y-m-d', $value);
+    }
+
+    /**
+     * Interact with the date.
+     */
+    public function getReturnedAtAttribute($value)
+    {
+        return date('Y-m-d', $value);
+    }
+
+    /**
+     * Interact with the date.
+     */
+    public function setSubmittedAtAttribute($value)
+    {
+        $this->attributes['submitted_at'] = strtotime($value);
+    }
+
+    /**
+     * Interact with the date.
+     */
+    public function setReturnedAtAttribute($value)
+    {
+        $this->attributes['returned_at'] = strtotime($value);
+    }
+
+    /**
+     * Set the image.
+     * @param string $value
+     * @return void
+     */
+    public function setAttachmentAttribute($attachment)
+    {
+        if ($attachment) {
+            $name = time() . '_' . $attachment->getClientOriginalName();
+            $attachment->move('upload/documents/', $name);
+            $this->attributes['attachment'] = $name;
+        } else {
+            unset($this->attributes['attachment']);
+        }
+    }
+
+    /**
+     * Get the image.
+     * @param string $value
+     * @return string
+     */
+    public function getAttachmentAttribute($image)
+    {
+        return asset('/upload/documents/' . $image);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -45,7 +102,7 @@ class JobDocument extends Model implements Auditable
     {
         return $this->hasOne('App\Models\Document', 'id', 'document_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -53,6 +110,4 @@ class JobDocument extends Model implements Auditable
     {
         return $this->hasOne('App\Models\Job', 'id', 'job_id');
     }
-    
-
 }
