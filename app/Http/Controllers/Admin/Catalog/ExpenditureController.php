@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\Catalog;
 use App\Http\Controllers\Controller;
 
 use App\Models\Expenditure;
@@ -37,7 +37,7 @@ class ExpenditureController extends Controller
     {
         $expenditures = Expenditure::get();
 
-        return view('admin.expenditure.index', compact('expenditures'));
+        return view('admin.catalog.expenditure.index', compact('expenditures'));
     }
 
     /**
@@ -48,7 +48,7 @@ class ExpenditureController extends Controller
     public function create(): View
     {
         $expenditure = new Expenditure();
-        return view('admin.expenditure.create', compact('expenditure'));
+        return view('admin.catalog.expenditure.create', compact('expenditure'));
     }
 
     /**
@@ -59,7 +59,7 @@ class ExpenditureController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       $expenditure = Expenditure::create($request->all());
+        $expenditure = Expenditure::create($request->all());
         return redirect()->route('expenditures.index')
             ->with('success', 'Expenditure created successfully.');
     }
@@ -74,7 +74,7 @@ class ExpenditureController extends Controller
     {
         $expenditure = Expenditure::find($id);
 
-        return view('admin.expenditure.show', compact('expenditure'));
+        return view('admin.catalog.expenditure.show', compact('expenditure'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ExpenditureController extends Controller
     {
         $expenditure = Expenditure::find($id);
 
-        return view('admin.expenditure.edit', compact('expenditure'));
+        return view('admin.catalog.expenditure.edit', compact('expenditure'));
     }
 
     /**

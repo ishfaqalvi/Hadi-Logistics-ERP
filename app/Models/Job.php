@@ -159,16 +159,6 @@ class Job extends Model implements Auditable
         return $this->hasOne('App\Models\Shed', 'id', 'shed_id');
     }
 
-
-
-
-
-
-
-
-
-
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -176,6 +166,16 @@ class Job extends Model implements Auditable
     {
         return $this->hasMany('App\Models\JobDocument', 'job_id', 'id');
     }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

@@ -1,7 +1,7 @@
 @extends('admin.layout.app')
 
 @section('title')
-    {{ __('Update') }} Expenditure
+{{ __('Create') }} Expenditure
 @endsection
 
 @section('header')
@@ -28,13 +28,12 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
-            <h5 class="mb-0">{{ __('Edit ') }} Expenditure </h5>
+            <h5 class="mb-0">{{ __('Create') }} Expenditure</h5>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route('expenditures.update', $expenditure->id) }}" class="validate"   role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('expenditures.store') }}" class="validate" role="form" enctype="multipart/form-data">
                 @csrf
-                {{ method_field('PATCH') }}
-                 @include('admin.expenditure.form')
+                @include('admin.catalog.expenditure.form')
             </form>
         </div>
     </div>
@@ -57,9 +56,6 @@
                 $(element).removeClass(errorClass);
                 $(element).removeClass('is-invalid');
                 $(element).addClass('is-valid');
-            },
-            success: function(label) {
-                label.addClass('validation-valid-label').text('Success.');
             },
             errorPlacement: function(error, element) {
                 if (element.hasClass('select2-hidden-accessible')) {

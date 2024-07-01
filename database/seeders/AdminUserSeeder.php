@@ -27,9 +27,11 @@ class AdminUserSeeder extends Seeder
         $user = User::firstOrNew(['email' =>  'superadmin@gmail.com']);
         $user->name = 'Super Admin';
         $user->password = 'password';
+        $user->type = 'Admin';
         $user->save();
 
         $role = Role::firstOrCreate(['name' => 'Super Admin'], ['guard_name' => 'web']);
+        $officerole = Role::firstOrCreate(['name' => 'Office Admin'], ['guard_name' => 'web']);
 
         $role->syncPermissions(Permission::all());
         $user->assignRole(1);

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\{VehicleCompany,Customer,Agent,Consignee, Office, Shed};
+use App\Models\{VehicleCompany,Customer,Agent,Consignee, User, Shed};
 
 /**
  * Get listing of a resource.
@@ -59,5 +59,5 @@ function sheds()
  */
 function offices()
 {
-    return Office::pluck('title','id');
+    return User::whereType('Office')->pluck('name','id');
 }

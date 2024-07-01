@@ -16,18 +16,10 @@
         </a>
     </li>
 @endcan
-@can('expenditures-list')
-    <li class="nav-item">
-        <a class="nav-link {{ Route::is('expenditures.*') ? 'active' : '' }}" href="{{ route('expenditures.index') }}">
-            <i class="ph-check-square"></i>
-            <span>Expenditures</span>
-        </a>
-    </li>
-@endcan
 @can('offices-list')
     <li class="nav-item">
         <a class="nav-link {{ Route::is('offices.*') ? 'active' : '' }}" href="{{ route('offices.index') }}">
-            <i class="ph-check-square"></i>
+            <i class="ph-buildings"></i>
             <span>Offices</span>
         </a>
     </li>
@@ -56,7 +48,7 @@
         </a>
     </li>
 @endcan
-@canany(['documents-list', 'verifications-list', 'passportChecks-list', 'vehicles-list', 'vehicleCompanies-list', 'sheds-list'])
+@canany(['documents-list', 'verifications-list', 'passportChecks-list', 'vehicles-list', 'vehicleCompanies-list', 'sheds-list', 'expenditures-list'])
     <li class="nav-item nav-item-submenu {{ request()->is('admin/catalog*') ? 'nav-item-expanded nav-item-open' : '' }}">
         <a href="#" class="nav-link ">
             <i class="ph-notebook"></i>
@@ -64,7 +56,7 @@
         </a>
         <ul class="nav-group-sub collapse {{ request()->is('admin/catalog*') ? 'show' : '' }}">
             @can('documents-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('documents.index') }}"
                         class="nav-link  {{ Route::is('documents.*') ? 'active' : '' }}">
                         <span>Documents</span>
@@ -72,7 +64,7 @@
                 </li>
             @endcan
             @can('verifications-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('verifications.index') }}"
                         class="nav-link  {{ Route::is('verifications.*') ? 'active' : '' }}">
                         <span>Verifications</span>
@@ -80,7 +72,7 @@
                 </li>
             @endcan
             @can('passportChecks-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('passport-checks.index') }}"
                         class="nav-link  {{ Route::is('passport-checks.*') ? 'active' : '' }}">
                         <span>Passport Checks</span>
@@ -88,7 +80,7 @@
                 </li>
             @endcan
             @can('vehicles-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('vehicles.index') }}"
                         class="nav-link  {{ Route::is('vehicles.*') ? 'active' : '' }}">
                         <span>Vehicles</span>
@@ -96,7 +88,7 @@
                 </li>
             @endcan
             @can('vehicleCompanies-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('vehicle-companies.index') }}"
                         class="nav-link  {{ Route::is('vehicle-companies.*') ? 'active' : '' }}">
                         <span>Vehicle Companies</span>
@@ -104,17 +96,23 @@
                 </li>
             @endcan
             @can('sheds-list')
-                <li class="nav-item  ">
+                <li class="nav-item">
                     <a href="{{ route('sheds.index') }}"
                         class="nav-link  {{ Route::is('sheds.*') ? 'active' : '' }}">
                         <span>Sheds</span>
                     </a>
                 </li>
             @endcan
+            @can('expenditures-list')
+                <li class="nav-item">
+                    <a href="{{ route('expenditures.index') }}" class="nav-link {{ Route::is('expenditures.*') ? 'active' : '' }}">
+                        <span>Expenditures</span>
+                    </a>
+                </li>
+            @endcan
         </ul>
     </li>
 @endcanany
-
 @canany(['roles-list', 'users-list'])
     <li class="nav-item-header">
         <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">Access Management</div>

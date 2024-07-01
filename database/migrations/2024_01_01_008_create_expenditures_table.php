@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('expenditures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('office_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
-            $table->enum('type', ['persona', 'customer'])->nullable();
+            $table->enum('type', ['Personal', 'Customer'])->default('Personal');
             $table->timestamps();
         });
     }

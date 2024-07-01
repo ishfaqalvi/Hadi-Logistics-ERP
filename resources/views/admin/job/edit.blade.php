@@ -22,39 +22,7 @@
         </div>
     </div>
 </div>
-<div class="page-header-content d-lg-flex border-top">
-    <div class="d-flex">
-        <a href="{{ route('jobs.edit', $job->id) }}" class="d-flex align-items-center text-body p-2
-            {{ Route::is('jobs.edit') ? 'active' : ''}}">
-            <i class="ph-note-pencil me-1"></i>
-            Detail
-        </a>
-    </div>
-
-    <div class="d-flex">
-        <a href="{{ route('jobs.document.index', $job->id) }}" class="d-flex align-items-center text-body p-2
-            {{ Route::is('jobs.document.index') ? 'active' : ''}}">
-            <i class="ph-files me-1"></i>
-            Documents
-        </a>
-    </div>
-
-    <div class="d-flex">
-        <a href="{{ route('jobs.verification.index', $job->id) }}" class="d-flex align-items-center text-body p-2
-            {{ Route::is('jobs.verification.index') ? 'active' : ''}}">
-            <i class="ph-checks me-1"></i>
-            Verifications
-        </a>
-    </div>
-
-    <div class="d-flex">
-        <a href="{{ route('jobs.passport-check.index', $job->id) }}" class="d-flex align-items-center text-body p-2
-            {{ Route::is('jobs.passport-check.index') ? 'active' : ''}}">
-            <i class="ph-identification-badge me-1"></i>
-            Passport Checks
-        </a>
-    </div>
-</div>
+@include('admin.job.navigation')
 @endsection
 
 @section('content')
@@ -67,7 +35,7 @@
             <form method="POST" action="{{ route('jobs.update', $job->id) }}" class="validate"   role="form" enctype="multipart/form-data">
                 @csrf
                 {{ method_field('PATCH') }}
-                 @include('admin.job.form')
+                @include('admin.job.form')
             </form>
         </div>
     </div>
@@ -115,24 +83,29 @@
                 $('input[name=notify]').attr('readonly', false);
             }
         });
-        if($('select[name=vehicle_company_id]').val()){
-            fetchVehicles($('select[name=vehicle_company_id]').val())
-        }
-        console.log($('select[name=vehicle_company_id]').val());
+
+        var vehicle_id = "{{ $job->vehicle_id }}";
+        let id = $('select[name=vehicle_company_id]').val();
+        fetchVehicles(id, vehicle_id);
         $('select[name=vehicle_company_id]').change(function () {
             let id = $(this).val();
-            fetchVehicles(id);
-
+            fetchVehicles(id, 0);
         });
-        function fetchVehicles(id){
+        function fetchVehicles(id, vehicle_id){
             $('select[name=vehicle_id]').html('<option>--Select--</option>');
-            $('select[name=vehicle_id]').attr('disabled',false);
             $.get('/admin/jobs/get-vehicles', {id: id}).done(function (result) {
                 let data = JSON.parse(result);
-                $('select[name=vehicle_id]').prop('disabled', false);
                 $.each(data, function (i, val) {
-                    $('select[name=vehicle_id]').append($('<option></option>').val(val.id).html(val.title));
-                })
+                    if(val.id == vehicle_id){
+                        $('select[name=vehicle_id]').append($('<option>',
+                            {selected : 'selected', value : val.id, text : val.title}
+                        ));
+                    }else{
+                        $('select[name=vehicle_id]').append($('<option>',
+                            {value : val.id,  text : val.title}
+                        ));
+                    }
+                });
             });
         }
         ['.bl_date','.eta'].forEach(selector => {

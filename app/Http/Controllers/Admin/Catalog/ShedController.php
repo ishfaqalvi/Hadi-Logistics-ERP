@@ -61,7 +61,7 @@ class ShedController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $shed = Shed::create($request->all());
-        return redirect()->route('catalog.sheds.index')
+        return redirect()->route('sheds.index')
             ->with('success', 'Shed created successfully.');
     }
 
@@ -102,7 +102,7 @@ class ShedController extends Controller
     {
         $shed->update($request->all());
 
-        return redirect()->route('catalog.sheds.index')
+        return redirect()->route('sheds.index')
             ->with('success', 'Shed updated successfully');
     }
 
@@ -115,7 +115,7 @@ class ShedController extends Controller
     {
         $shed = Shed::find($id)->delete();
 
-        return redirect()->route('catalog.sheds.index')
+        return redirect()->route('sheds.index')
             ->with('success', 'Shed deleted successfully');
     }
 }

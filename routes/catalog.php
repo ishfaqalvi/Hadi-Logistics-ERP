@@ -43,3 +43,10 @@ Route::resource('documents', DocumentController::class);
 |--------------------------------------------------------------------------
 */
 Route::resource('sheds', ShedController::class);
+
+/*
+|--------------------------------------------------------------------------
+| Expenditures  Routes
+|--------------------------------------------------------------------------
+*/
+Route::resource('expenditures', ExpenditureController::class);

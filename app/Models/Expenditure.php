@@ -9,7 +9,7 @@ use OwenIt\Auditing\Contracts\Auditable;
  * Class Expenditure
  *
  * @property $id
- * @property $office_id
+ * @property $user_id
  * @property $title
  * @property $type
  * @property $created_at
@@ -23,8 +23,6 @@ class Expenditure extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
 
-    
-
     protected $perPage = 20;
 
     /**
@@ -32,7 +30,7 @@ class Expenditure extends Model implements Auditable
      *
      * @var array
      */
-    protected $fillable = ['office_id','title','type'];
+    protected $fillable = ['user_id','title','type'];
 
 
     /**
@@ -40,8 +38,6 @@ class Expenditure extends Model implements Auditable
      */
     public function office()
     {
-        return $this->hasOne('App\Models\Office', 'id', 'office_id');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
-    
-
 }

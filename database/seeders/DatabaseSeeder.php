@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionSeeder::class);
         $this->call(AdminUserSeeder::class);
+        $this->call(OfficeSeeder::class);
         // $this->call(SettingsSeeder::class);
         $this->call(DocumentSeeder::class);
         $this->call(PassportCheckSeeder::class);
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AgentSeeder::class);
         $this->call(ConsigneeSeeder::class);
         $this->call(CustomerSeeder::class);
+        $this->call(ExpenditureSeeder::class);
     }
 }

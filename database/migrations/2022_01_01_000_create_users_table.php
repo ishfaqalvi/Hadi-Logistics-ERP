@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image')->default('images/profile/avatar.jpg');
             $table->rememberToken();
             $table->enum('status', ['active', 'inactive'])->default('active');
+            $table->enum('type', ['Admin', 'Office','User'])->default('Admin');
             $table->timestamps();
         });
     }

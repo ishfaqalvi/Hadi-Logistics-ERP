@@ -5,16 +5,16 @@
                 <i class="ph-list"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-                <form action="{{ route('catalog.sheds.destroy', $shed->id) }}" method="POST">
+                <form action="{{ route('sheds.destroy', $shed->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     @can('sheds-view')
-                        <a href="{{ route('catalog.sheds.show', $shed->id) }}" class="dropdown-item">
+                        <a href="{{ route('sheds.show', $shed->id) }}" class="dropdown-item">
                             <i class="ph-eye me-2"></i>{{ __('Show') }}
                         </a>
                     @endcan
                     @can('sheds-edit')
-                        <a href="{{ route('catalog.sheds.edit', $shed->id) }}" class="dropdown-item">
+                        <a href="{{ route('sheds.edit', $shed->id) }}" class="dropdown-item">
                             <i class="ph-note-pencil me-2"></i>{{ __('Edit') }}
                         </a>
                     @endcan

@@ -16,47 +16,17 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'offices-list',
+            'offices-view',
+            'offices-create',
+            'offices-edit',
+            'offices-delete',
+            
             'jobs-list',
             'jobs-view',
             'jobs-create',
             'jobs-edit',
             'jobs-delete',
-
-            'sheds-list',
-            'sheds-view',
-            'sheds-create',
-            'sheds-edit',
-            'sheds-delete',
-
-            'vehicleCompanies-list',
-            'vehicleCompanies-view',
-            'vehicleCompanies-create',
-            'vehicleCompanies-edit',
-            'vehicleCompanies-delete',
-
-            'vehicles-list',
-            'vehicles-view',
-            'vehicles-create',
-            'vehicles-edit',
-            'vehicles-delete',
-
-            'documents-list',
-            'documents-view',
-            'documents-create',
-            'documents-edit',
-            'documents-delete',
-
-            'passportChecks-list',
-            'passportChecks-view',
-            'passportChecks-create',
-            'passportChecks-edit',
-            'passportChecks-delete',
-
-            'verifications-list',
-            'verifications-view',
-            'verifications-create',
-            'verifications-edit',
-            'verifications-delete',
 
             'agents-list',
             'agents-view',
@@ -70,23 +40,53 @@ class PermissionSeeder extends Seeder
             'consignees-edit',
             'consignees-delete',
 
-            'expenditures-list',
-            'expenditures-view',
-            'expenditures-create',
-            'expenditures-edit',
-            'expenditures-delete',
-
-            'offices-list',
-            'offices-view',
-            'offices-create',
-            'offices-edit',
-            'offices-delete',
-
             'customers-list',
             'customers-view',
             'customers-create',
             'customers-edit',
             'customers-delete',
+
+            'documents-list',
+            'documents-view',
+            'documents-create',
+            'documents-edit',
+            'documents-delete',
+
+            'verifications-list',
+            'verifications-view',
+            'verifications-create',
+            'verifications-edit',
+            'verifications-delete',
+
+            'passportChecks-list',
+            'passportChecks-view',
+            'passportChecks-create',
+            'passportChecks-edit',
+            'passportChecks-delete',
+
+            'vehicles-list',
+            'vehicles-view',
+            'vehicles-create',
+            'vehicles-edit',
+            'vehicles-delete',
+
+            'vehicleCompanies-list',
+            'vehicleCompanies-view',
+            'vehicleCompanies-create',
+            'vehicleCompanies-edit',
+            'vehicleCompanies-delete',
+
+            'sheds-list',
+            'sheds-view',
+            'sheds-create',
+            'sheds-edit',
+            'sheds-delete',
+
+            'expenditures-list',
+            'expenditures-view',
+            'expenditures-create',
+            'expenditures-edit',
+            'expenditures-delete',
 
             'roles-list',
             'roles-view',

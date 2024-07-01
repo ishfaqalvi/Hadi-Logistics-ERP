@@ -37,14 +37,10 @@ class DocumentController extends Controller
      */
     public function index($id): View
     {
-        $job =  Job::find($id);
-        $documents = Document::with(['jobDocument' => function ($query) use ($job) {
-            $query->where('job_id', $job->id);
-        }])->get();
-        // dd($documents);
-        // $jobDocuments = JobDocument::get();
+        $job =  Job::with('jobDocuments')->find($id);
+        $documents = Document::whereStatus(1)->get();
 
-        return view('admin.job.document.index', compact('documents', 'job'));
+        return view('admin.job.document.index', compact('job','documents'));
     }
 
     /**

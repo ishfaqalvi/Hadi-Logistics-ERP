@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
+use App\Models\User;
 
-use App\Models\Office;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 
 /**
@@ -35,7 +35,7 @@ class OfficeController extends Controller
      */
     public function index(): View
     {
-        $offices = Office::get();
+        $offices = User::whereType('Office')->get();
 
         return view('admin.office.index', compact('offices'));
     }
@@ -47,7 +47,8 @@ class OfficeController extends Controller
      */
     public function create(): View
     {
-        $office = new Office();
+        $office = new User();
+        
         return view('admin.office.create', compact('office'));
     }
 
@@ -59,7 +60,8 @@ class OfficeController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-       $office = Office::create($request->all());
+        $office = User::create($request->all());
+        $office->assignRole([2]);
         return redirect()->route('offices.index')
             ->with('success', 'Office created successfully.');
     }
@@ -72,7 +74,7 @@ class OfficeController extends Controller
      */
     public function show($id): View
     {
-        $office = Office::find($id);
+        $office = User::find($id);
 
         return view('admin.office.show', compact('office'));
     }
@@ -85,7 +87,7 @@ class OfficeController extends Controller
      */
     public function edit($id): View
     {
-        $office = Office::find($id);
+        $office = User::find($id);
 
         return view('admin.office.edit', compact('office'));
     }
@@ -97,7 +99,7 @@ class OfficeController extends Controller
      * @param  Office $office
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Office $office): RedirectResponse
+    public function update(Request $request, User $office): RedirectResponse
     {
         $office->update($request->all());
 
@@ -112,7 +114,7 @@ class OfficeController extends Controller
      */
     public function destroy($id): RedirectResponse
     {
-        $office = Office::find($id)->delete();
+        $office = User::find($id)->delete();
 
         return redirect()->route('offices.index')
             ->with('success', 'Office deleted successfully');

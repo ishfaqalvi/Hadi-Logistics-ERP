@@ -73,7 +73,7 @@
         {!! $errors->first('last_entry_to_bl_days', '<div class="invalid-feedback">:message</div>') !!}
     </div>
     <div class="form-group col-lg-4 mb-3">
-        {{ Form::label('collectortae') }}
+        {{ Form::label('collectorate') }}
         {{ Form::text('collectortae', $job->collectortae, ['class' => 'form-control' . ($errors->has('collectortae') ? ' is-invalid' : ''), 'placeholder' => 'Collectortae','required']) }}
         {!! $errors->first('collectortae', '<div class="invalid-feedback">:message</div>') !!}
     </div>

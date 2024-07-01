@@ -36,11 +36,9 @@
             <thead class="thead">
                 <tr>
                     <th>No</th>
-
-										<th>Office Id</th>
-										<th>Title</th>
-										<th>Type</th>
-
+                    <th>Office</th>
+                    <th>Title</th>
+                    <th>Type</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
@@ -48,12 +46,10 @@
             @foreach ($expenditures as $key => $expenditure)
                 <tr>
                     <td>{{ ++$key }}</td>
-
-											<td>{{ $expenditure->office_id }}</td>
-											<td>{{ $expenditure->title }}</td>
-											<td>{{ $expenditure->type }}</td>
-
-                    <td class="text-center">@include('admin.expenditure.actions')</td>
+                    <td>{{ $expenditure->office->name }}</td>
+                    <td>{{ $expenditure->title }}</td>
+                    <td>{{ $expenditure->type }}</td>
+                    <td class="text-center">@include('admin.catalog.expenditure.actions')</td>
                 </tr>
             @endforeach
             </tbody>

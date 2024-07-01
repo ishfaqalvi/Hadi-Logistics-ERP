@@ -31,20 +31,18 @@
             <h5 class="mb-0">{{ __('Show') }} Expenditure</h5>
         </div>
         <div class="card-body">
-            
-                        <div class="form-group mb-3">
-                            <strong>Office Id:</strong>
-                            {{ $expenditure->office_id }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Title:</strong>
-                            {{ $expenditure->title }}
-                        </div>
-                        <div class="form-group mb-3">
-                            <strong>Type:</strong>
-                            {{ $expenditure->type }}
-                        </div>
-
+            <div class="form-group mb-3">
+                <strong>Office:</strong>
+                {{ $expenditure->office->title }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Type:</strong>
+                {{ $expenditure->type }}
+            </div>
+            <div class="form-group mb-3">
+                <strong>Title:</strong>
+                {{ $expenditure->title }}
+            </div>
         </div>
     </div>
 </div>

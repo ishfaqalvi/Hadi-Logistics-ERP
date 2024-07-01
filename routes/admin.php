@@ -16,23 +16,12 @@ Route::get('dashboard', DashboardController::class)->name('dashboard');
 */
 Route::prefix('/jobs')->namespace('\App\Http\Controllers\Admin\Job')->group(__DIR__.'/jobs.php');
 
-// Route::controller(JobController::class)->prefix('jobs')->as('jobs.')->group(function () {
-//     Route::get('list',                  'index'         )->name('index'         );
-//     Route::get('create',                'create'        )->name('create'        );
-//     Route::post('store',                'store'         )->name('store'         );
-//     Route::get('edit/{id}',             'edit'          )->name('edit'          );
-//     Route::get('show/{id}',             'show'          )->name('show'          );
-//     Route::patch('update/{job}',        'update'        )->name('update'        );
-//     Route::delete('delete/{id}',        'destroy'       )->name('destroy'       );
-//     Route::get('get-vehicles',          'getVehicles'   )->name('getVehicles'   );
-// });
-
 /*
 |--------------------------------------------------------------------------
-| Agents Routes
+| Office Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('agents', AgentController::class);
+Route::resource('offices', OfficeController::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -50,17 +39,10 @@ Route::resource('consignees', ConsigneeController::class);
 
 /*
 |--------------------------------------------------------------------------
-| Office Routes
+| Agents Routes
 |--------------------------------------------------------------------------
 */
-Route::resource('offices', OfficeController::class);
-
-/*
-|--------------------------------------------------------------------------
-| Expenditures  Routes
-|--------------------------------------------------------------------------
-*/
-Route::resource('expenditures', ExpenditureController::class);
+Route::resource('agents', AgentController::class);
 
 /*
 |--------------------------------------------------------------------------
